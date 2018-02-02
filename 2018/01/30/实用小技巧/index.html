@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="记录一些很实用的小方法，方便在以后的工作中查询。 js对象的克隆潜复制1Object.create( Object.getPrototypeOf(obj), Object.getOwnPropertyDescriptors(obj) ) 正则匹配12匹配中文字符[\u4e00-\u9fa5] 123匹配双字节字符(包括汉字在内)[^\x00-\xff]/[^ -~]/g 12匹配首尾空格(^\s*">
+<meta name="description" content="记录一些很实用的小方法，方便在以后的工作中查询。 js一个数的奇偶性判断12345678910/*	使用位运算符 效率更高	&amp;amp;  只有对应的数为1时，结果才为1，其他都为0	   0001	&amp;amp;  0011   	--------	   0001*/if (num &amp;amp; 1) console.log(&apos;奇数&apos;)else console.log(&apos;偶数&apos;) 求2的 n 次方11">
 <meta name="keywords" content="JavaScript,正则">
 <meta property="og:type" content="article">
 <meta property="og:title" content="实用小技巧">
 <meta property="og:url" content="http://yoursite.com/2018/01/30/实用小技巧/index.html">
 <meta property="og:site_name" content="SilenYang@前端笔记">
-<meta property="og:description" content="记录一些很实用的小方法，方便在以后的工作中查询。 js对象的克隆潜复制1Object.create( Object.getPrototypeOf(obj), Object.getOwnPropertyDescriptors(obj) ) 正则匹配12匹配中文字符[\u4e00-\u9fa5] 123匹配双字节字符(包括汉字在内)[^\x00-\xff]/[^ -~]/g 12匹配首尾空格(^\s*">
+<meta property="og:description" content="记录一些很实用的小方法，方便在以后的工作中查询。 js一个数的奇偶性判断12345678910/*	使用位运算符 效率更高	&amp;amp;  只有对应的数为1时，结果才为1，其他都为0	   0001	&amp;amp;  0011   	--------	   0001*/if (num &amp;amp; 1) console.log(&apos;奇数&apos;)else console.log(&apos;偶数&apos;) 求2的 n 次方11">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-01T09:22:48.905Z">
+<meta property="og:updated_time" content="2018-02-02T06:01:37.629Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="实用小技巧">
-<meta name="twitter:description" content="记录一些很实用的小方法，方便在以后的工作中查询。 js对象的克隆潜复制1Object.create( Object.getPrototypeOf(obj), Object.getOwnPropertyDescriptors(obj) ) 正则匹配12匹配中文字符[\u4e00-\u9fa5] 123匹配双字节字符(包括汉字在内)[^\x00-\xff]/[^ -~]/g 12匹配首尾空格(^\s*">
+<meta name="twitter:description" content="记录一些很实用的小方法，方便在以后的工作中查询。 js一个数的奇偶性判断12345678910/*	使用位运算符 效率更高	&amp;amp;  只有对应的数为1时，结果才为1，其他都为0	   0001	&amp;amp;  0011   	--------	   0001*/if (num &amp;amp; 1) console.log(&apos;奇数&apos;)else console.log(&apos;偶数&apos;) 求2的 n 次方11">
 
 
 
@@ -343,8 +343,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/小技巧/" itemprop="url" rel="index">
-                    <span itemprop="name">小技巧</span>
+                  <a href="/categories/JavaScript/黑科技/" itemprop="url" rel="index">
+                    <span itemprop="name">黑科技</span>
                   </a>
                 </span>
 
@@ -381,8 +381,11 @@
 
       
         <p>记录一些很实用的小方法，方便在以后的工作中查询。</p>
-<h1 id="js"><a href="#js" class="headerlink" title="js"></a>js</h1><h3 id="对象的克隆"><a href="#对象的克隆" class="headerlink" title="对象的克隆"></a>对象的克隆</h3><p>潜复制<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.create( <span class="built_in">Object</span>.getPrototypeOf(obj), <span class="built_in">Object</span>.getOwnPropertyDescriptors(obj) )</span><br></pre></td></tr></table></figure></p>
-<h1 id="正则匹配"><a href="#正则匹配" class="headerlink" title="正则匹配"></a>正则匹配</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">匹配中文字符</span><br><span class="line">[\u4e00-\u9fa5]</span><br></pre></td></tr></table></figure>
+<h2 id="js"><a href="#js" class="headerlink" title="js"></a>js</h2><h4 id="一个数的奇偶性判断"><a href="#一个数的奇偶性判断" class="headerlink" title="一个数的奇偶性判断"></a>一个数的奇偶性判断</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	使用位运算符 效率更高</span></span><br><span class="line"><span class="comment">	&amp;  只有对应的数为1时，结果才为1，其他都为0</span></span><br><span class="line"><span class="comment">	   0001</span></span><br><span class="line"><span class="comment">	&amp;  0011</span></span><br><span class="line"><span class="comment">   	--------</span></span><br><span class="line"><span class="comment">	   0001</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">if</span> (num &amp; <span class="number">1</span>) <span class="built_in">console</span>.log(<span class="string">'奇数'</span>)</span><br><span class="line"><span class="keyword">else</span> <span class="built_in">console</span>.log(<span class="string">'偶数'</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="求2的-n-次方"><a href="#求2的-n-次方" class="headerlink" title="求2的 n 次方"></a>求2的 n 次方</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> &lt;&lt; n</span><br></pre></td></tr></table></figure>
+<h4 id="两个变量互换"><a href="#两个变量互换" class="headerlink" title="两个变量互换"></a>两个变量互换</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> var1 = <span class="string">'aaaa'</span>, var2 = <span class="string">'bbbb'</span></span><br><span class="line">var1 = [var2, var2 = var1][<span class="number">0</span>];</span><br></pre></td></tr></table></figure>
+<h4 id="潜复制"><a href="#潜复制" class="headerlink" title="潜复制"></a>潜复制</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.create( <span class="built_in">Object</span>.getPrototypeOf(obj), <span class="built_in">Object</span>.getOwnPropertyDescriptors(obj) )</span><br></pre></td></tr></table></figure>
+<h2 id="正则匹配"><a href="#正则匹配" class="headerlink" title="正则匹配"></a>正则匹配</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">匹配中文字符</span><br><span class="line">[\u4e00-\u9fa5]</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">匹配双字节字符(包括汉字在内)</span><br><span class="line">[^\x00-\xff]</span><br><span class="line">/[^ -~]/g</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">匹配首尾空格</span><br><span class="line">(^\s*)|(\s*$)</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">匹配空行</span><br><span class="line">\n[\s| ]*\r</span><br></pre></td></tr></table></figure>
@@ -582,7 +585,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#js"><span class="nav-number">1.</span> <span class="nav-text">js</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对象的克隆"><span class="nav-number">1.0.1.</span> <span class="nav-text">对象的克隆</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正则匹配"><span class="nav-number">2.</span> <span class="nav-text">正则匹配</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#js"><span class="nav-number">1.</span> <span class="nav-text">js</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一个数的奇偶性判断"><span class="nav-number">1.0.1.</span> <span class="nav-text">一个数的奇偶性判断</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#求2的-n-次方"><span class="nav-number">1.0.2.</span> <span class="nav-text">求2的 n 次方</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#两个变量互换"><span class="nav-number">1.0.3.</span> <span class="nav-text">两个变量互换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#潜复制"><span class="nav-number">1.0.4.</span> <span class="nav-text">潜复制</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则匹配"><span class="nav-number">2.</span> <span class="nav-text">正则匹配</span></a></li></ol></div>
             
 
           </div>
