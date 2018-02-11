@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="JavaScript,正则," />
+  <meta name="keywords" content="server,nginx," />
 
 
 
@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="记录一些很实用的小方法，方便在以后的工作中查询。 js一个数的奇偶性判断12345678910/*   使用位运算符 效率更高   &amp;amp;  只有对应的数为1时，结果才为1，其他都为0      0001   &amp;amp;  0011   --------      0001*/if (num &amp;amp; 1) console.log(&apos;奇数&apos;)else console.log(&apos;偶数&apos;)">
-<meta name="keywords" content="JavaScript,正则">
+<meta name="description" content="在使用 node 作为服务器时通常会遇到gzip编码，静态文件，HTTP缓存，SSL处理，负载平衡和反向代理等问题、虽然 node 都有它的解决方案，但是性能相较于 ngnix 还是要差一点。并且可以通过nginx强大的缓存来节省您网站的流量从而提高网站的加载速度。 本文主要是关于 ngnix 在负载均衡方面的记录，方便以后的查阅。">
+<meta name="keywords" content="server,nginx">
 <meta property="og:type" content="article">
-<meta property="og:title" content="实用小技巧">
-<meta property="og:url" content="http://yoursite.com/2018/01/30/实用小技巧/index.html">
+<meta property="og:title" content="nginx的负载均衡配置">
+<meta property="og:url" content="http://yoursite.com/2018/02/11/nginx的负载均衡配置/index.html">
 <meta property="og:site_name" content="SilenYang@前端笔记">
-<meta property="og:description" content="记录一些很实用的小方法，方便在以后的工作中查询。 js一个数的奇偶性判断12345678910/*   使用位运算符 效率更高   &amp;amp;  只有对应的数为1时，结果才为1，其他都为0      0001   &amp;amp;  0011   --------      0001*/if (num &amp;amp; 1) console.log(&apos;奇数&apos;)else console.log(&apos;偶数&apos;)">
+<meta property="og:description" content="在使用 node 作为服务器时通常会遇到gzip编码，静态文件，HTTP缓存，SSL处理，负载平衡和反向代理等问题、虽然 node 都有它的解决方案，但是性能相较于 ngnix 还是要差一点。并且可以通过nginx强大的缓存来节省您网站的流量从而提高网站的加载速度。 本文主要是关于 ngnix 在负载均衡方面的记录，方便以后的查阅。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-05T04:05:28.678Z">
+<meta property="og:updated_time" content="2018-02-11T08:16:06.381Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="实用小技巧">
-<meta name="twitter:description" content="记录一些很实用的小方法，方便在以后的工作中查询。 js一个数的奇偶性判断12345678910/*   使用位运算符 效率更高   &amp;amp;  只有对应的数为1时，结果才为1，其他都为0      0001   &amp;amp;  0011   --------      0001*/if (num &amp;amp; 1) console.log(&apos;奇数&apos;)else console.log(&apos;偶数&apos;)">
+<meta name="twitter:title" content="nginx的负载均衡配置">
+<meta name="twitter:description" content="在使用 node 作为服务器时通常会遇到gzip编码，静态文件，HTTP缓存，SSL处理，负载平衡和反向代理等问题、虽然 node 都有它的解决方案，但是性能相较于 ngnix 还是要差一点。并且可以通过nginx强大的缓存来节省您网站的流量从而提高网站的加载速度。 本文主要是关于 ngnix 在负载均衡方面的记录，方便以后的查阅。">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/01/30/实用小技巧/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/02/11/nginx的负载均衡配置/"/>
 
 
 
 
 
-  <title>实用小技巧 | SilenYang@前端笔记</title>
+  <title>nginx的负载均衡配置 | SilenYang@前端笔记</title>
   
 
 
@@ -280,7 +280,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/30/实用小技巧/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/11/nginx的负载均衡配置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="SilenYang">
@@ -297,7 +297,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">实用小技巧</h1>
+          <h1 class="post-title" itemprop="name headline">nginx的负载均衡配置</h1>
         
 
         <div class="post-meta">
@@ -309,8 +309,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-30T09:42:55+08:00">
-                2018-01-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-11T15:08:46+08:00">
+                2018-02-11
               </time>
             
 
@@ -332,19 +332,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/黑科技/" itemprop="url" rel="index">
-                    <span itemprop="name">黑科技</span>
+                  <a href="/categories/服务器/" itemprop="url" rel="index">
+                    <span itemprop="name">服务器</span>
                   </a>
                 </span>
 
@@ -380,19 +369,20 @@
       
 
       
-        <p>记录一些很实用的小方法，方便在以后的工作中查询。</p>
-<h2 id="js"><a href="#js" class="headerlink" title="js"></a>js</h2><h4 id="一个数的奇偶性判断"><a href="#一个数的奇偶性判断" class="headerlink" title="一个数的奇偶性判断"></a>一个数的奇偶性判断</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">   使用位运算符 效率更高</span></span><br><span class="line"><span class="comment">   &amp;  只有对应的数为1时，结果才为1，其他都为0</span></span><br><span class="line"><span class="comment">      0001</span></span><br><span class="line"><span class="comment">   &amp;  0011</span></span><br><span class="line"><span class="comment">   --------</span></span><br><span class="line"><span class="comment">      0001</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">if</span> (num &amp; <span class="number">1</span>) <span class="built_in">console</span>.log(<span class="string">'奇数'</span>)</span><br><span class="line"><span class="keyword">else</span> <span class="built_in">console</span>.log(<span class="string">'偶数'</span>)</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h4 id="求2的-n-次方"><a href="#求2的-n-次方" class="headerlink" title="求2的 n 次方"></a>求2的 n 次方</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> &lt;&lt; n</span><br></pre></td></tr></table></figure>
-<h4 id="两个变量互换"><a href="#两个变量互换" class="headerlink" title="两个变量互换"></a>两个变量互换</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> var1 = <span class="string">'aaaa'</span>, var2 = <span class="string">'bbbb'</span></span><br><span class="line">var1 = [var2, var2 = var1][<span class="number">0</span>];</span><br></pre></td></tr></table></figure>
-<h4 id="潜拷贝"><a href="#潜拷贝" class="headerlink" title="潜拷贝"></a>潜拷贝</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.create( <span class="built_in">Object</span>.getPrototypeOf(obj), <span class="built_in">Object</span>.getOwnPropertyDescriptors(obj) )</span><br></pre></td></tr></table></figure>
-<h4 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepCopy</span> (<span class="params">obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> obj !== <span class="string">'object'</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> newObj = obj <span class="keyword">instanceof</span> <span class="built_in">Array</span> ? [] : &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">        <span class="keyword">if</span> (obj.hasOwnProperty(key)) &#123;</span><br><span class="line">            newObj[key] = <span class="keyword">typeof</span> obj[key] === <span class="string">'object'</span> ? deepCopy(obj[key]) : obj[key]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newObj</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="计算滚动条的宽度"><a href="#计算滚动条的宽度" class="headerlink" title="计算滚动条的宽度"></a>计算滚动条的宽度</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content.offsetHeight - content.scrollHeight</span><br></pre></td></tr></table></figure>
-<h2 id="正则匹配"><a href="#正则匹配" class="headerlink" title="正则匹配"></a>正则匹配</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">匹配中文字符</span><br><span class="line">/[\u4e00-\u9fa5]/</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">匹配双字节字符(包括汉字在内)</span><br><span class="line">/[^\x00-\xff]/</span><br><span class="line">/[^ -~]/g</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">匹配首尾空格</span><br><span class="line">/(^\s*)|(\s*$)/</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">匹配空行</span><br><span class="line">/\n[\s| ]*\r/</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">匹配邮箱</span><br><span class="line">/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*<span class="regexp">/</span></span><br></pre></td></tr></table></figure>
+        <p>在使用 node 作为服务器时通常会遇到gzip编码，静态文件，HTTP缓存，SSL处理，负载平衡和反向代理等问题、虽然 node 都有它的解决方案，但是性能相较于 ngnix 还是要差一点。并且可以通过nginx强大的缓存来节省您网站的流量从而提高网站的加载速度。</p>
+<p>本文主要是关于 ngnix 在负载均衡方面的记录，方便以后的查阅。<br><a id="more"></a></p>
+<h2 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h2><p>负载均衡有多重方案，可以按照实际情况选择。</p>
+<h3 id="轮询（默认）"><a href="#轮询（默认）" class="headerlink" title="轮询（默认）"></a>轮询（默认）</h3><p>按照配置的顺序，将客户端的请求依次分发到各个服务器中去。配置如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">upstream server_pool &#123;  </span><br><span class="line">    server <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">8000</span>;  </span><br><span class="line">    server <span class="number">127.0</span><span class="number">.0</span><span class="number">.2</span>:<span class="number">8000</span>;  </span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line">server&#123;  </span><br><span class="line">    listen <span class="number">80</span>;  </span><br><span class="line">    ...  </span><br><span class="line">    location / &#123;  </span><br><span class="line">        ...</span><br><span class="line">        proxy_pass http:<span class="comment">//server_pool;  </span></span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<h3 id="最少连接"><a href="#最少连接" class="headerlink" title="最少连接"></a>最少连接</h3><p>请求会被分发到连接数少的服务器中去，配置如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">upstream server_pool &#123;</span><br><span class="line">    least_conn;  <span class="comment">//只是多了这一项配置，其他和轮询一致</span></span><br><span class="line">    server <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">8000</span>;  </span><br><span class="line">    server <span class="number">127.0</span><span class="number">.0</span><span class="number">.2</span>:<span class="number">8000</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="基于权重"><a href="#基于权重" class="headerlink" title="基于权重"></a>基于权重</h3><p>可以根据服务器的性能给服务器设置权重，权重越高，被分配的请求数也越多。配置如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">upstream server_pool &#123;</span><br><span class="line">    server <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">8000</span> weight=<span class="number">2</span>;  </span><br><span class="line">    server <span class="number">127.0</span><span class="number">.0</span><span class="number">.2</span>:<span class="number">8000</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>设置<code>weight=2</code>后，每3个请求，第一个服务器会收到两个，第二个服务器会收到一个。</p>
+<h3 id="基于-IP"><a href="#基于-IP" class="headerlink" title="基于 IP"></a>基于 IP</h3><p>前几种方法中，同一客户端的请求可能会被到不同的服务器中去，对于某些需要涉及到 session 的情况会变得复杂，可采取基于 IP 的解决方案，同一 IP 的请求会被分配到同一个服务器中去。配置如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">upstream server_pool &#123;</span><br><span class="line">    ip_hash;  <span class="comment">//只是多了这一项配置，其他和轮询一致</span></span><br><span class="line">    server <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">8000</span>;  </span><br><span class="line">    server <span class="number">127.0</span><span class="number">.0</span><span class="number">.2</span>:<span class="number">8000</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>说明一点，基于权重的负载均衡和基于IP的负载均衡可以组合在一起使用。</p>
+</blockquote>
+<h3 id="fair（第三方）"><a href="#fair（第三方）" class="headerlink" title="fair（第三方）"></a>fair（第三方）</h3><p>按服务器的响应时间来分配请求，响应时间短的优先分配。配置如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">upstream server_pool &#123;</span><br><span class="line">    server <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">8000</span>;  </span><br><span class="line">    server <span class="number">127.0</span><span class="number">.0</span><span class="number">.2</span>:<span class="number">8000</span>;  </span><br><span class="line">    fair;  <span class="comment">//只是多了这一项配置，其他和轮询一致</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="url-hash（第三方）"><a href="#url-hash（第三方）" class="headerlink" title="url_hash（第三方）"></a>url_hash（第三方）</h3><p>按访问url的hash结果来分配请求，使每个url定向到同一个服务器，服务器为缓存时比较有效。配置如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">upstream server_pool &#123;</span><br><span class="line">    server <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">8000</span>;  </span><br><span class="line">    server <span class="number">127.0</span><span class="number">.0</span><span class="number">.2</span>:<span class="number">8000</span>;  </span><br><span class="line">    hash $request_uri;</span><br><span class="line">    hash_method crc32;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="其他配置"><a href="#其他配置" class="headerlink" title="其他配置"></a>其他配置</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">upstream server_pool &#123;</span><br><span class="line">    server server1;  </span><br><span class="line">    server server2 backup; <span class="comment">// 当其他服务器挂掉或者忙的的时候才会访问该服务器</span></span><br><span class="line">    server server2 down; <span class="comment">// 该节点不参与负载均衡</span></span><br><span class="line">    max_fails: <span class="number">1</span>;<span class="comment">// 允许请求失败的次数默认为1.当超过最大次数时，返回proxy_next_upstream 模块定义的错误.</span></span><br><span class="line">    fail_timeout: <span class="number">100</span>ms;<span class="comment">// max_fails次失败后，暂停的时间。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -419,9 +409,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JavaScript/" rel="tag"><i class="fa fa-tag"></i> JavaScript</a>
+            <a href="/tags/server/" rel="tag"><i class="fa fa-tag"></i> server</a>
           
-            <a href="/tags/正则/" rel="tag"><i class="fa fa-tag"></i> 正则</a>
+            <a href="/tags/nginx/" rel="tag"><i class="fa fa-tag"></i> nginx</a>
           
         </div>
       
@@ -434,8 +424,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/11/数组的遍历/" rel="next" title="数组的遍历">
-                <i class="fa fa-chevron-left"></i> 数组的遍历
+              <a href="/2018/01/30/实用小技巧/" rel="next" title="实用小技巧">
+                <i class="fa fa-chevron-left"></i> 实用小技巧
               </a>
             
           </div>
@@ -443,10 +433,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/11/nginx的负载均衡配置/" rel="prev" title="nginx的负载均衡配置">
-                nginx的负载均衡配置 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -592,7 +578,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#js"><span class="nav-number">1.</span> <span class="nav-text">js</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一个数的奇偶性判断"><span class="nav-number">1.0.1.</span> <span class="nav-text">一个数的奇偶性判断</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#求2的-n-次方"><span class="nav-number">1.0.2.</span> <span class="nav-text">求2的 n 次方</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#两个变量互换"><span class="nav-number">1.0.3.</span> <span class="nav-text">两个变量互换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#潜拷贝"><span class="nav-number">1.0.4.</span> <span class="nav-text">潜拷贝</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#深拷贝"><span class="nav-number">1.0.5.</span> <span class="nav-text">深拷贝</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算滚动条的宽度"><span class="nav-number">1.0.6.</span> <span class="nav-text">计算滚动条的宽度</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则匹配"><span class="nav-number">2.</span> <span class="nav-text">正则匹配</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#负载均衡"><span class="nav-number">1.</span> <span class="nav-text">负载均衡</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#轮询（默认）"><span class="nav-number">1.1.</span> <span class="nav-text">轮询（默认）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最少连接"><span class="nav-number">1.2.</span> <span class="nav-text">最少连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于权重"><span class="nav-number">1.3.</span> <span class="nav-text">基于权重</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于-IP"><span class="nav-number">1.4.</span> <span class="nav-text">基于 IP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fair（第三方）"><span class="nav-number">1.5.</span> <span class="nav-text">fair（第三方）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#url-hash（第三方）"><span class="nav-number">1.6.</span> <span class="nav-text">url_hash（第三方）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他配置"><span class="nav-number">2.</span> <span class="nav-text">其他配置</span></a></li></ol></div>
             
 
           </div>
