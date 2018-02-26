@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="JavaScript,正则," />
+  <meta name="keywords" content="server,nginx," />
 
 
 
@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="记录一些很实用的小方法，方便在以后的工作中查询。 js一个数的奇偶性判断12345678910/*   使用位运算符 效率更高   &amp;amp;  只有对应的数为1时，结果才为1，其他都为0      0001   &amp;amp;  0011   --------      0001*/if (num &amp;amp; 1) console.log(&apos;奇数&apos;)else console.log(&apos;偶数&apos;)">
-<meta name="keywords" content="JavaScript,正则">
+<meta name="description" content="location的基本语法格式为：1location [=|~|~*|^~|@] pattern &amp;#123; ... &amp;#125; [=|~|~*|^~|@] 被称作 location modifier 修饰器（前缀） ，这会定义 nginx 如何去匹配其后的 pattern ，以及该 pattern 的最基本的属性（简单字符串或正则表达式）">
+<meta name="keywords" content="server,nginx">
 <meta property="og:type" content="article">
-<meta property="og:title" content="实用小技巧">
-<meta property="og:url" content="http://yoursite.com/2018/01/30/实用小技巧/index.html">
+<meta property="og:title" content="nginx location的匹配方式">
+<meta property="og:url" content="http://yoursite.com/2018/02/26/nginx location的匹配方式/index.html">
 <meta property="og:site_name" content="SilenYang@前端笔记">
-<meta property="og:description" content="记录一些很实用的小方法，方便在以后的工作中查询。 js一个数的奇偶性判断12345678910/*   使用位运算符 效率更高   &amp;amp;  只有对应的数为1时，结果才为1，其他都为0      0001   &amp;amp;  0011   --------      0001*/if (num &amp;amp; 1) console.log(&apos;奇数&apos;)else console.log(&apos;偶数&apos;)">
+<meta property="og:description" content="location的基本语法格式为：1location [=|~|~*|^~|@] pattern &amp;#123; ... &amp;#125; [=|~|~*|^~|@] 被称作 location modifier 修饰器（前缀） ，这会定义 nginx 如何去匹配其后的 pattern ，以及该 pattern 的最基本的属性（简单字符串或正则表达式）">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-05T04:05:28.678Z">
+<meta property="og:updated_time" content="2018-02-26T09:11:15.828Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="实用小技巧">
-<meta name="twitter:description" content="记录一些很实用的小方法，方便在以后的工作中查询。 js一个数的奇偶性判断12345678910/*   使用位运算符 效率更高   &amp;amp;  只有对应的数为1时，结果才为1，其他都为0      0001   &amp;amp;  0011   --------      0001*/if (num &amp;amp; 1) console.log(&apos;奇数&apos;)else console.log(&apos;偶数&apos;)">
+<meta name="twitter:title" content="nginx location的匹配方式">
+<meta name="twitter:description" content="location的基本语法格式为：1location [=|~|~*|^~|@] pattern &amp;#123; ... &amp;#125; [=|~|~*|^~|@] 被称作 location modifier 修饰器（前缀） ，这会定义 nginx 如何去匹配其后的 pattern ，以及该 pattern 的最基本的属性（简单字符串或正则表达式）">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/01/30/实用小技巧/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/02/26/nginx location的匹配方式/"/>
 
 
 
 
 
-  <title>实用小技巧 | SilenYang@前端笔记</title>
+  <title>nginx location的匹配方式 | SilenYang@前端笔记</title>
   
 
 
@@ -280,7 +280,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/30/实用小技巧/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/26/nginx location的匹配方式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="SilenYang">
@@ -297,7 +297,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">实用小技巧</h1>
+          <h1 class="post-title" itemprop="name headline">nginx location的匹配方式</h1>
         
 
         <div class="post-meta">
@@ -309,8 +309,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-30T09:42:55+08:00">
-                2018-01-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-26T10:04:44+08:00">
+                2018-02-26
               </time>
             
 
@@ -332,19 +332,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/黑科技/" itemprop="url" rel="index">
-                    <span itemprop="name">黑科技</span>
+                  <a href="/categories/服务器/" itemprop="url" rel="index">
+                    <span itemprop="name">服务器</span>
                   </a>
                 </span>
 
@@ -380,19 +369,48 @@
       
 
       
-        <p>记录一些很实用的小方法，方便在以后的工作中查询。</p>
-<h2 id="js"><a href="#js" class="headerlink" title="js"></a>js</h2><h4 id="一个数的奇偶性判断"><a href="#一个数的奇偶性判断" class="headerlink" title="一个数的奇偶性判断"></a>一个数的奇偶性判断</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">   使用位运算符 效率更高</span></span><br><span class="line"><span class="comment">   &amp;  只有对应的数为1时，结果才为1，其他都为0</span></span><br><span class="line"><span class="comment">      0001</span></span><br><span class="line"><span class="comment">   &amp;  0011</span></span><br><span class="line"><span class="comment">   --------</span></span><br><span class="line"><span class="comment">      0001</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">if</span> (num &amp; <span class="number">1</span>) <span class="built_in">console</span>.log(<span class="string">'奇数'</span>)</span><br><span class="line"><span class="keyword">else</span> <span class="built_in">console</span>.log(<span class="string">'偶数'</span>)</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h4 id="求2的-n-次方"><a href="#求2的-n-次方" class="headerlink" title="求2的 n 次方"></a>求2的 n 次方</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> &lt;&lt; n</span><br></pre></td></tr></table></figure>
-<h4 id="两个变量互换"><a href="#两个变量互换" class="headerlink" title="两个变量互换"></a>两个变量互换</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> var1 = <span class="string">'aaaa'</span>, var2 = <span class="string">'bbbb'</span></span><br><span class="line">var1 = [var2, var2 = var1][<span class="number">0</span>];</span><br></pre></td></tr></table></figure>
-<h4 id="潜拷贝"><a href="#潜拷贝" class="headerlink" title="潜拷贝"></a>潜拷贝</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.create( <span class="built_in">Object</span>.getPrototypeOf(obj), <span class="built_in">Object</span>.getOwnPropertyDescriptors(obj) )</span><br></pre></td></tr></table></figure>
-<h4 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepCopy</span> (<span class="params">obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> obj !== <span class="string">'object'</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> newObj = obj <span class="keyword">instanceof</span> <span class="built_in">Array</span> ? [] : &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">        <span class="keyword">if</span> (obj.hasOwnProperty(key)) &#123;</span><br><span class="line">            newObj[key] = <span class="keyword">typeof</span> obj[key] === <span class="string">'object'</span> ? deepCopy(obj[key]) : obj[key]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newObj</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="计算滚动条的宽度"><a href="#计算滚动条的宽度" class="headerlink" title="计算滚动条的宽度"></a>计算滚动条的宽度</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content.offsetHeight - content.scrollHeight</span><br></pre></td></tr></table></figure>
-<h2 id="正则匹配"><a href="#正则匹配" class="headerlink" title="正则匹配"></a>正则匹配</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">匹配中文字符</span><br><span class="line">/[\u4e00-\u9fa5]/</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">匹配双字节字符(包括汉字在内)</span><br><span class="line">/[^\x00-\xff]/</span><br><span class="line">/[^ -~]/g</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">匹配首尾空格</span><br><span class="line">/(^\s*)|(\s*$)/</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">匹配空行</span><br><span class="line">/\n[\s| ]*\r/</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">匹配邮箱</span><br><span class="line">/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*<span class="regexp">/</span></span><br></pre></td></tr></table></figure>
+        <p><code>location</code>的基本语法格式为：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">location [=|~|~*|^~|@] pattern &#123; ... &#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>[=|~|~*|^~|@]</code> 被称作 <code>location modifier</code> 修饰器（前缀） ，这会定义 <code>nginx</code> 如何去匹配其后的 <code>pattern</code> ，以及该 <code>pattern</code> 的最基本的属性（简单字符串或正则表达式）<br><a id="more"></a></p>
+<h3 id="匹配顺序"><a href="#匹配顺序" class="headerlink" title="匹配顺序"></a>匹配顺序</h3><ol>
+<li><code>=</code>前缀指令匹配，如果匹配成功，则停止其他匹配</li>
+<li>字符串指令匹配，顺序是从长到短，匹配成功的<code>location</code>如果使用<code>^~</code>，则停止正则匹配</li>
+<li>正则表达式指令匹配，按照配置文件里的顺序，成功就停止其他匹配</li>
+<li>如果第三步中有匹配成功，则使用该结果，否则使用第二步结果</li>
+</ol>
+<blockquote>
+<ol>
+<li><p>匹配的顺序是先匹配字符串，再匹配正则。字符串匹配顺序是根据配置中字符长度从长到短，与字符串配置的<code>location</code>顺序是无关的；但是需要注意的是正则按照配置文件里的顺序匹配。找到第一个比配的正则表达式将停止后续匹配。</p>
+</li>
+<li><p>一般情况下，匹配成功了字符串<code>location</code>后还会进行正则表达式<code>location</code>匹配。有两种方法改变这种行为：一种是使用<code>=</code>前缀，这时执行的是严格匹配，并且匹配成功后立即停止其他匹配，同时处理这个请求；另外一种是使用<code>^~</code>前缀，如果路径匹配那么不匹配正则。</p>
+</li>
+</ol>
+</blockquote>
+<h3 id="匹配模式及顺序"><a href="#匹配模式及顺序" class="headerlink" title="匹配模式及顺序"></a>匹配模式及顺序</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">=   精确匹配（必须全部相等）</span><br><span class="line">^~  uri以某个常规字符串开头，不是正则匹配</span><br><span class="line">~   区分大小写的正则匹配</span><br><span class="line">~*  不区分大小写的正则匹配</span><br><span class="line">@   服务内部跳转（不会被client访问到,只能被内部配置指令所访问，比如 try_files or error_page）</span><br><span class="line">!~  对区分大小写的匹配取反</span><br><span class="line">!~* 对不区分大小写的匹配取反</span><br><span class="line">/   通用匹配，如果没有其他匹配，任何请求都会被匹配到</span><br></pre></td></tr></table></figure>
+<p>匹配顺序为：</p>
+<blockquote>
+<p>（location =）&gt;（location 完整路径）&gt;（location ^~路径）&gt;（location ~,~*正则顺序）&gt;（location 部分起始路径）&gt;（/）</p>
+</blockquote>
+<h3 id="匹配例子"><a href="#匹配例子" class="headerlink" title="匹配例子"></a>匹配例子</h3><ol>
+<li><p><code>=</code>精确匹配</p>
+ <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> = / &#123;</span><br><span class="line">    <span class="comment"># 规则</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 则匹配到 `http://www.example.com/` 这种请求</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>~</code>大小写敏感</p>
+ <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> <span class="regexp">~ /Example/</span> &#123;</span><br><span class="line">    <span class="comment"># 规则</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#http://www.example.com/Example/  [成功]</span></span><br><span class="line"><span class="comment">#http://www.example.com/example/  [失败]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>~*</code>大小写忽略</p>
+ <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> <span class="regexp">~* /Example/</span> &#123;</span><br><span class="line">    <span class="comment"># 规则</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#http://www.example.com/Example/  [成功]</span></span><br><span class="line"><span class="comment">#http://www.example.com/example/  [成功]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>^~</code>uri开头匹配</p>
+ <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span><span class="regexp"> ^~</span> /abc/ &#123;</span><br><span class="line">    <span class="comment"># 规则</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#http://www.example.com/abc/a.jpg  [成功]</span></span><br><span class="line"><span class="comment">#http://www.example.com/abc/b.mp4  [成功]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>@</code>nginx内部跳转</p>
+ <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="attribute">location</span> /img/ &#123;</span><br><span class="line">    <span class="attribute">error_page</span> <span class="number">404</span> <span class="variable">@img_err</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="attribute">location</span> <span class="variable">@img_err</span> &#123;</span><br><span class="line">    <span class="comment"># 规则</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#以 /img/ 开头的请求，如果链接的状态为 404。则会匹配到 @img_err 这条规则上。</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="常用的匹配"><a href="#常用的匹配" class="headerlink" title="常用的匹配"></a>常用的匹配</h3><p>直接匹配网站根，通过域名访问网站首页比较频繁，使用这个会加速处理:<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> = / &#123;</span><br><span class="line">    <span class="attribute">proxy_pass</span> http://localhost:8080/index</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>处理静态文件请求，这是nginx作为http服务器的强项：<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span><span class="regexp"> ^~</span> /static/ &#123;</span><br><span class="line">    <span class="attribute">root</span> /webroot/static/;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line"><span class="attribute">location</span> <span class="regexp">~* \.(gif|jpg|jpeg|png|css|js|ico)$</span> &#123;</span><br><span class="line">    <span class="attribute">root</span> /webroot/res/;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>通用规则，用来转发动态请求到后端应用服务器：<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> / &#123;</span><br><span class="line">    <span class="attribute">proxy_pass</span> http://localhost:8080/</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
 
@@ -419,9 +437,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JavaScript/" rel="tag"><i class="fa fa-tag"></i> JavaScript</a>
+            <a href="/tags/server/" rel="tag"><i class="fa fa-tag"></i> server</a>
           
-            <a href="/tags/正则/" rel="tag"><i class="fa fa-tag"></i> 正则</a>
+            <a href="/tags/nginx/" rel="tag"><i class="fa fa-tag"></i> nginx</a>
           
         </div>
       
@@ -434,8 +452,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/11/数组的遍历/" rel="next" title="数组的遍历">
-                <i class="fa fa-chevron-left"></i> 数组的遍历
+              <a href="/2018/02/11/nginx的负载均衡配置/" rel="next" title="nginx的负载均衡配置">
+                <i class="fa fa-chevron-left"></i> nginx的负载均衡配置
               </a>
             
           </div>
@@ -444,8 +462,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/02/11/nginx的负载均衡配置/" rel="prev" title="nginx的负载均衡配置">
-                nginx的负载均衡配置 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/02/27/nginx的代理配置/" rel="prev" title="nginx的代理配置">
+                nginx的代理配置 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -592,7 +610,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#js"><span class="nav-number">1.</span> <span class="nav-text">js</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一个数的奇偶性判断"><span class="nav-number">1.0.1.</span> <span class="nav-text">一个数的奇偶性判断</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#求2的-n-次方"><span class="nav-number">1.0.2.</span> <span class="nav-text">求2的 n 次方</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#两个变量互换"><span class="nav-number">1.0.3.</span> <span class="nav-text">两个变量互换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#潜拷贝"><span class="nav-number">1.0.4.</span> <span class="nav-text">潜拷贝</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#深拷贝"><span class="nav-number">1.0.5.</span> <span class="nav-text">深拷贝</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算滚动条的宽度"><span class="nav-number">1.0.6.</span> <span class="nav-text">计算滚动条的宽度</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则匹配"><span class="nav-number">2.</span> <span class="nav-text">正则匹配</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#匹配顺序"><span class="nav-number">1.</span> <span class="nav-text">匹配顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匹配模式及顺序"><span class="nav-number">2.</span> <span class="nav-text">匹配模式及顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匹配例子"><span class="nav-number">3.</span> <span class="nav-text">匹配例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用的匹配"><span class="nav-number">4.</span> <span class="nav-text">常用的匹配</span></a></li></ol></div>
             
 
           </div>
