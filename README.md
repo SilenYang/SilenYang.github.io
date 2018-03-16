@@ -1,3 +1,3 @@
 ## personal blog website
 
-https://silenyang.github.io
+http://www.silenyang.com

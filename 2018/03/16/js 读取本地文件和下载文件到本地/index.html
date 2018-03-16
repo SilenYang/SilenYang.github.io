@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="server,nginx," />
+  <meta name="keywords" content="JavaScript,Web API," />
 
 
 
@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="location的基本语法格式为：1location [=|~|~*|^~|@] pattern &amp;#123; ... &amp;#125; [=|~|~*|^~|@] 被称作 location modifier（修饰器/前缀），这会定义 nginx 如何去匹配其后的 pattern ，以及该 pattern 的最基本的属性（简单字符串或正则表达式）">
-<meta name="keywords" content="server,nginx">
+<meta name="description" content="最近做了个小功能，需要读取本地的 json 文件数据，在页面经过修改、编辑过后，还要能够导出到本地，页面就是一个数据的处理器。查了一些资料，做一个记录。">
+<meta name="keywords" content="JavaScript,Web API">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nginx location的匹配方式">
-<meta property="og:url" content="http://yoursite.com/2018/02/26/nginx location的匹配方式/index.html">
+<meta property="og:title" content="js 读取本地文件和下载文件到本地">
+<meta property="og:url" content="http://yoursite.com/2018/03/16/js 读取本地文件和下载文件到本地/index.html">
 <meta property="og:site_name" content="SilenYang@前端笔记">
-<meta property="og:description" content="location的基本语法格式为：1location [=|~|~*|^~|@] pattern &amp;#123; ... &amp;#125; [=|~|~*|^~|@] 被称作 location modifier（修饰器/前缀），这会定义 nginx 如何去匹配其后的 pattern ，以及该 pattern 的最基本的属性（简单字符串或正则表达式）">
+<meta property="og:description" content="最近做了个小功能，需要读取本地的 json 文件数据，在页面经过修改、编辑过后，还要能够导出到本地，页面就是一个数据的处理器。查了一些资料，做一个记录。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-27T06:16:22.399Z">
+<meta property="og:updated_time" content="2018-03-16T08:33:38.044Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nginx location的匹配方式">
-<meta name="twitter:description" content="location的基本语法格式为：1location [=|~|~*|^~|@] pattern &amp;#123; ... &amp;#125; [=|~|~*|^~|@] 被称作 location modifier（修饰器/前缀），这会定义 nginx 如何去匹配其后的 pattern ，以及该 pattern 的最基本的属性（简单字符串或正则表达式）">
+<meta name="twitter:title" content="js 读取本地文件和下载文件到本地">
+<meta name="twitter:description" content="最近做了个小功能，需要读取本地的 json 文件数据，在页面经过修改、编辑过后，还要能够导出到本地，页面就是一个数据的处理器。查了一些资料，做一个记录。">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/02/26/nginx location的匹配方式/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/16/js 读取本地文件和下载文件到本地/"/>
 
 
 
 
 
-  <title>nginx location的匹配方式 | SilenYang@前端笔记</title>
+  <title>js 读取本地文件和下载文件到本地 | SilenYang@前端笔记</title>
   
 
 
@@ -280,7 +280,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/26/nginx location的匹配方式/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/16/js 读取本地文件和下载文件到本地/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="SilenYang">
@@ -297,7 +297,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">nginx location的匹配方式</h1>
+          <h1 class="post-title" itemprop="name headline">js 读取本地文件和下载文件到本地</h1>
         
 
         <div class="post-meta">
@@ -309,8 +309,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-26T10:04:44+08:00">
-                2018-02-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-16T15:40:05+08:00">
+                2018-03-16
               </time>
             
 
@@ -332,8 +332,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/服务器/" itemprop="url" rel="index">
-                    <span itemprop="name">服务器</span>
+                  <a href="/categories/HTML5/" itemprop="url" rel="index">
+                    <span itemprop="name">HTML5</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML5/Web-API/" itemprop="url" rel="index">
+                    <span itemprop="name">Web API</span>
                   </a>
                 </span>
 
@@ -369,48 +380,16 @@
       
 
       
-        <p><code>location</code>的基本语法格式为：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">location [=|~|~*|^~|@] pattern &#123; ... &#125;</span><br></pre></td></tr></table></figure></p>
-<p><code>[=|~|~*|^~|@]</code> 被称作 <code>location modifier</code>（修饰器/前缀），这会定义 <code>nginx</code> 如何去匹配其后的 <code>pattern</code> ，以及该 <code>pattern</code> 的最基本的属性（简单字符串或正则表达式）<br><a id="more"></a></p>
-<h3 id="匹配顺序"><a href="#匹配顺序" class="headerlink" title="匹配顺序"></a>匹配顺序</h3><ol>
-<li><code>=</code>前缀指令匹配，如果匹配成功，则停止其他匹配</li>
-<li>字符串指令匹配，顺序是从长到短，匹配成功的<code>location</code>如果使用<code>^~</code>，则停止正则匹配</li>
-<li>正则表达式指令匹配，按照配置文件里的顺序，成功就停止其他匹配</li>
-<li>如果第三步中有匹配成功，则使用该结果，否则使用第二步结果</li>
-</ol>
-<blockquote>
-<ol>
-<li><p>匹配的顺序是先匹配字符串，再匹配正则。字符串匹配顺序是根据配置中字符长度从长到短，与字符串配置的<code>location</code>顺序是无关的；但是需要注意的是正则按照配置文件里的顺序匹配。找到第一个比配的正则表达式将停止后续匹配。</p>
-</li>
-<li><p>一般情况下，匹配成功了字符串<code>location</code>后还会进行正则表达式<code>location</code>匹配。有两种方法改变这种行为：一种是使用<code>=</code>前缀，这时执行的是严格匹配，并且匹配成功后立即停止其他匹配，同时处理这个请求；另外一种是使用<code>^~</code>前缀，如果路径匹配那么不匹配正则。</p>
-</li>
-</ol>
-</blockquote>
-<p>匹配顺序为：</p>
-<blockquote>
-<p>（location =）&gt;（location 完整路径）&gt;（location ^~路径）&gt;（location ~,~*正则顺序）&gt;（location 部分起始路径）&gt;（/）</p>
-</blockquote>
-<h3 id="匹配模式"><a href="#匹配模式" class="headerlink" title="匹配模式"></a>匹配模式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">=   精确匹配（必须全部相等）</span><br><span class="line">^~  uri以某个常规字符串开头，不是正则匹配</span><br><span class="line">~   区分大小写的正则匹配</span><br><span class="line">~*  不区分大小写的正则匹配</span><br><span class="line">@   服务内部跳转（不会被client访问到,只能被内部配置指令所访问，比如 try_files or error_page）</span><br><span class="line">!~  对区分大小写的匹配取反</span><br><span class="line">!~* 对不区分大小写的匹配取反</span><br><span class="line">/   通用匹配，如果没有其他匹配，任何请求都会被匹配到</span><br></pre></td></tr></table></figure>
-<h3 id="匹配例子"><a href="#匹配例子" class="headerlink" title="匹配例子"></a>匹配例子</h3><ol>
-<li><p><code>=</code>精确匹配</p>
- <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> = / &#123;</span><br><span class="line">    <span class="comment"># 规则</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 则匹配到 `http://www.example.com/` 这种请求</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>~</code>大小写敏感</p>
- <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> <span class="regexp">~ /Example/</span> &#123;</span><br><span class="line">    <span class="comment"># 规则</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#http://www.example.com/Example/  [成功]</span></span><br><span class="line"><span class="comment">#http://www.example.com/example/  [失败]</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>~*</code>大小写忽略</p>
- <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> <span class="regexp">~* /Example/</span> &#123;</span><br><span class="line">    <span class="comment"># 规则</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#http://www.example.com/Example/  [成功]</span></span><br><span class="line"><span class="comment">#http://www.example.com/example/  [成功]</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>^~</code>uri开头匹配</p>
- <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span><span class="regexp"> ^~</span> /abc/ &#123;</span><br><span class="line">    <span class="comment"># 规则</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#http://www.example.com/abc/a.jpg  [成功]</span></span><br><span class="line"><span class="comment">#http://www.example.com/abc/b.mp4  [成功]</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>@</code>nginx内部跳转</p>
- <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="attribute">location</span> /img/ &#123;</span><br><span class="line">    <span class="attribute">error_page</span> <span class="number">404</span> <span class="variable">@img_err</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="attribute">location</span> <span class="variable">@img_err</span> &#123;</span><br><span class="line">    <span class="comment"># 规则</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#以 /img/ 开头的请求，如果链接的状态为 404。则会匹配到 @img_err 这条规则上。</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="常用的匹配"><a href="#常用的匹配" class="headerlink" title="常用的匹配"></a>常用的匹配</h3><p>直接匹配网站根，通过域名访问网站首页比较频繁，使用这个会加速处理:<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> = / &#123;</span><br><span class="line">    <span class="attribute">proxy_pass</span> http://localhost:8080/index</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>处理静态文件请求，这是nginx作为http服务器的强项：<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span><span class="regexp"> ^~</span> /static/ &#123;</span><br><span class="line">    <span class="attribute">root</span> /webroot/static/;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line"><span class="attribute">location</span> <span class="regexp">~* \.(gif|jpg|jpeg|png|css|js|ico)$</span> &#123;</span><br><span class="line">    <span class="attribute">root</span> /webroot/res/;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>通用规则，用来转发动态请求到后端应用服务器：<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> / &#123;</span><br><span class="line">    <span class="attribute">proxy_pass</span> http://localhost:8080/</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
+        <p>最近做了个小功能，需要读取本地的 json 文件数据，在页面经过修改、编辑过后，还要能够导出到本地，页面就是一个数据的处理器。查了一些资料，做一个记录。</p>
+<a id="more"></a>
+<h3 id="使用-FileReader-实现读取本地文件"><a href="#使用-FileReader-实现读取本地文件" class="headerlink" title="使用 FileReader 实现读取本地文件"></a>使用 <code>FileReader</code> 实现读取本地文件</h3><p>首先需要我们获取本地文件：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ipt = <span class="built_in">document</span>.createElement(<span class="string">'input'</span>)</span><br><span class="line">ipt.type = <span class="string">'file'</span></span><br><span class="line">ipt.style.display = <span class="string">'none'</span></span><br><span class="line"><span class="built_in">document</span>.body.appendChild(ipt)</span><br><span class="line">ipt.click()</span><br></pre></td></tr></table></figure></p>
+<p>使用浏览器选择本地文件是一个很简单的操作，关键是对选取后的文件进行文件的读取的问题，需要能够读取文件内的内容。</p>
+<p>在这个过程中，使用到了 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader" target="_blank" rel="noopener">FileReader</a> 方法，该方法能够允许Web应用程序异步读取存储在用户计算机上的文件（或原始数据缓冲区）的内容，使用 <code>File</code> 或 <code>Blob</code> 对象指定要读取的文件或数据。配合前面获取到的文件就能够读取文件中的内容了。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ipt.onchange = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> files = ipt.files[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">const</span> reader = <span class="keyword">new</span> FileReader()</span><br><span class="line">    reader.readAsText(files)</span><br><span class="line">    reader.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> res = <span class="built_in">JSON</span>.parse(reader.result)</span><br><span class="line">        <span class="built_in">console</span>.log(res)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="使用-Bolb-实现存储数据到本地"><a href="#使用-Bolb-实现存储数据到本地" class="headerlink" title="使用 Bolb 实现存储数据到本地"></a>使用 <code>Bolb</code> 实现存储数据到本地</h3><p>实现方式为使用 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Blob" target="_blank" rel="noopener">Bolb</a> 方法。</p>
+<p>在官方文档中，我们看到一个示例,讲一个数组数据生成一个 <code>bolb</code> 类型的 URL:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> typedArray = GetTheTypedArraySomehow();</span><br><span class="line"><span class="keyword">var</span> blob = <span class="keyword">new</span> Blob([typedArray], &#123;<span class="attr">type</span>: <span class="string">"application/octet-binary"</span>&#125;);<span class="comment">// 传入一个合适的MIME类型</span></span><br><span class="line"><span class="keyword">var</span> url = URL.createObjectURL(blob);</span><br><span class="line"><span class="comment">// 会产生一个类似blob:d3958f5c-0777-0845-9dcf-2cb28783acaf 这样的URL字符串</span></span><br><span class="line"><span class="comment">// 你可以像使用一个普通URL那样使用它，比如用在img.src上。</span></span><br></pre></td></tr></table></figure></p>
+<p>按照这个示例，利用生成的 URL 然后使用 <code>a</code> 标签就能够实现将数据下载到本地：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> eleLink = <span class="built_in">document</span>.createElement(<span class="string">'a'</span>)</span><br><span class="line">eleLink.download = <span class="string">'统计数据.json'</span></span><br><span class="line">eleLink.style.display = <span class="string">'none'</span></span><br><span class="line"><span class="comment">// 字符内容转变成blob地址</span></span><br><span class="line"><span class="keyword">const</span> blob = <span class="keyword">new</span> Blob(</span><br><span class="line">    [<span class="built_in">JSON</span>.stringify(&#123;</span><br><span class="line">        gift: <span class="keyword">this</span>.state.gift,</span><br><span class="line">        user: <span class="keyword">this</span>.state.user,</span><br><span class="line">        days: <span class="keyword">this</span>.state.days,</span><br><span class="line">        channel: <span class="keyword">this</span>.state.channel,</span><br><span class="line">    &#125;)],</span><br><span class="line">    &#123;<span class="attr">type</span>: <span class="string">"text/plain;charset=utf-8"</span>&#125;</span><br><span class="line">)</span><br><span class="line">eleLink.href = URL.createObjectURL(blob)</span><br><span class="line">eleLink.click()</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -437,9 +416,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/server/" rel="tag"><i class="fa fa-tag"></i> server</a>
+            <a href="/tags/JavaScript/" rel="tag"><i class="fa fa-tag"></i> JavaScript</a>
           
-            <a href="/tags/nginx/" rel="tag"><i class="fa fa-tag"></i> nginx</a>
+            <a href="/tags/Web-API/" rel="tag"><i class="fa fa-tag"></i> Web API</a>
           
         </div>
       
@@ -452,8 +431,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/11/nginx的负载均衡配置/" rel="next" title="nginx的负载均衡配置">
-                <i class="fa fa-chevron-left"></i> nginx的负载均衡配置
+              <a href="/2018/03/05/常用工具使用/" rel="next" title="常用工具使用">
+                <i class="fa fa-chevron-left"></i> 常用工具使用
               </a>
             
           </div>
@@ -461,10 +440,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/27/nginx的代理配置/" rel="prev" title="nginx的代理配置">
-                nginx的代理配置 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -610,7 +585,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#匹配顺序"><span class="nav-number">1.</span> <span class="nav-text">匹配顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匹配模式"><span class="nav-number">2.</span> <span class="nav-text">匹配模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匹配例子"><span class="nav-number">3.</span> <span class="nav-text">匹配例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用的匹配"><span class="nav-number">4.</span> <span class="nav-text">常用的匹配</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-FileReader-实现读取本地文件"><span class="nav-number">1.</span> <span class="nav-text">使用 FileReader 实现读取本地文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-Bolb-实现存储数据到本地"><span class="nav-number">2.</span> <span class="nav-text">使用 Bolb 实现存储数据到本地</span></a></li></ol></div>
             
 
           </div>
