@@ -1,3 +1,3 @@
 ## personal blog website
 
-http://www.silenyang.com
+http://blog.silenyang.com
