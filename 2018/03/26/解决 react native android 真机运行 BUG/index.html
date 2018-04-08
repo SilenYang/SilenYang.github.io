@@ -97,7 +97,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/03/26/解决%20react%20native%20android%20真机运行%20BUG/devices.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/03/26/解决%20react%20native%20android%20真机运行%20BUG/bug1.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/03/26/解决%20react%20native%20android%20真机运行%20BUG/bug2.jpg">
-<meta property="og:updated_time" content="2018-03-26T03:04:07.780Z">
+<meta property="og:updated_time" content="2018-03-26T03:10:55.956Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="解决 react native Android 真机运行 BUG">
 <meta name="twitter:description" content="在进行 react native 开发的时候，难免会进行真机的调试，由于没有 iPhone 的手机，所以进行的是 Android 的真机调试，记录一下调试过程中遇到的 BUG、已经处理办法。">
@@ -392,7 +392,7 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-2.2-all.zip
 </code></pre>
 <p>再重新执行一遍命名后，发现还是不行，得到了以下的错误：<br><img src="/2018/03/26/解决%20react%20native%20android%20真机运行%20BUG/bug2.jpg" title="启动错误2"></p>
 <p>检查后发现在 <code>开发者选项</code> 里面有一项 <code>USB安装</code> 的选项没有打开，打开后再执行命令，会弹出一个警告框，提示你允许安装，允许后就能够在手机上进行真机预览了。</p>
-<p>如果我们再 <code>开发者选项</code> 里面把最后一项的 <code>启用MIUI优化</code> 关掉后，会让你进行手机的重新启动。然后再执行命令，在手机上安装应用就不会有提示框。然后就能够进行正常的真机调试了。</p>
+<p>如果我们在 <code>开发者选项</code> 里面把最后一项的 <code>启用MIUI优化</code> 关掉后，会让你进行手机的重新启动。然后再执行命令，在手机上安装应用就不会有提示框。然后就能够进行正常的真机调试了。</p>
 <p>然后我尝试性的把先前的配置文件改回以前的配置，发现也能够正常的进行真机开发。</p>
 
       
@@ -445,6 +445,10 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-2.2-all.zip
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/08/常见错误集合（持续更新...）/" rel="prev" title="常见错误集合（持续更新...）">
+                常见错误集合（持续更新...） <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -516,7 +520,7 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-2.2-all.zip
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -538,7 +542,7 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-2.2-all.zip
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
