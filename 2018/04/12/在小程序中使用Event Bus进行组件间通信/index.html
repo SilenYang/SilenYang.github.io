@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="SilenYang@前端笔记">
 <meta property="og:description" content="在开发小程序时，我们会遇到在多个组件间要进行通信的情况，而官方只有全局的 global 能够进行全局性的访问，但并不能够解决我们问题，所以一个能实现全局性的组件间通信很有必要。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-10T08:11:13.978Z">
+<meta property="og:updated_time" content="2018-04-10T08:14:34.939Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在小程序中使用Event Bus进行组件间通信">
 <meta name="twitter:description" content="在开发小程序时，我们会遇到在多个组件间要进行通信的情况，而官方只有全局的 global 能够进行全局性的访问，但并不能够解决我们问题，所以一个能实现全局性的组件间通信很有必要。">
@@ -377,9 +377,9 @@
 <h3 id="触发事件"><a href="#触发事件" class="headerlink" title="触发事件"></a>触发事件</h3><p>事件的触发，需要的是一个事件名称，也许会传入一些参数：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">emit(type, ...param) &#123;</span><br><span class="line">    <span class="keyword">let</span> cache = <span class="keyword">this</span>.EventCache[type], key;</span><br><span class="line">    <span class="keyword">if</span> (!cache) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">for</span> (key <span class="keyword">in</span> cache) cache[key].call(<span class="keyword">this</span>, ...param)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>一个完整的<code>Event Bus</code>就完成了，如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EventBus</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>() &#123;</span><br><span class="line">        <span class="keyword">this</span>.EventCache = &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    on(type, self, handler) &#123;</span><br><span class="line">        <span class="keyword">let</span> cache = <span class="keyword">this</span>.EventCache[type] || (<span class="keyword">this</span>.EventCache[type] = &#123;&#125;);</span><br><span class="line">        cache[self.__route__] = handler;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    emit(type, ...param) &#123;</span><br><span class="line">        <span class="keyword">let</span> cache = <span class="keyword">this</span>.EventCache[type], key;</span><br><span class="line">        <span class="keyword">if</span> (!cache) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">for</span> (key <span class="keyword">in</span> cache) cache[key].call(<span class="keyword">this</span>, ...param)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    off(type, self) &#123;</span><br><span class="line">        <span class="keyword">let</span> cache = <span class="keyword">this</span>.EventCache[type], key;</span><br><span class="line">        <span class="keyword">for</span> (key <span class="keyword">in</span> cache) key === self.__route__ &amp;&amp; (<span class="keyword">delete</span> <span class="keyword">this</span>.EventCache[type][key])</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>剩下的就是在组件中使用了</p>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>我们将上面的写在一个文件中导出，需要时引入就行了：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">EventBus</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>我们将上面的写在一个文件中导出，需要时引入就行了：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">EventBus</span> </span>&#123; ... &#125;</span><br></pre></td></tr></table></figure></p>
 <p>在小程序的入口文件 <code>app.js</code> 中，我们引入，并初始化：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; EventBus &#125; = <span class="built_in">require</span>(<span class="string">'your file path'</span>);</span><br><span class="line"></span><br><span class="line">App(&#123;</span><br><span class="line">    event: <span class="keyword">new</span> EventBus(),</span><br><span class="line">    onLaunch: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line">    ...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>初始化后，在其他组件引入 <code>app</code> ,并调用相应的方法就行了：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = getApp();</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">    onLoad() &#123;</span><br><span class="line">        app.event.on(<span class="string">'EventName'</span>, <span class="keyword">this</span>, () =&gt; &#123;&#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    onShow() &#123;</span><br><span class="line">        app.event.emit(<span class="string">'EventName'</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    onUnload() &#123;</span><br><span class="line">        app.event.off(<span class="string">'EventName'</span>, <span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>初始化后，在其他组件引入 <code>app</code> ，并调用相应的方法就行了：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = getApp();</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">    onLoad() &#123;</span><br><span class="line">        app.event.on(<span class="string">'EventName'</span>, <span class="keyword">this</span>, () =&gt; &#123;&#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    onShow() &#123;</span><br><span class="line">        app.event.emit(<span class="string">'EventName'</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    onUnload() &#123;</span><br><span class="line">        app.event.off(<span class="string">'EventName'</span>, <span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -429,6 +429,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/13/在 VirtualBox 中使用 CentOS 遇到的问题/" rel="prev" title="在 VirtualBox 中使用 CentOS 遇到的问题">
+                在 VirtualBox 中使用 CentOS 遇到的问题 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -509,7 +513,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -520,7 +524,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -531,7 +535,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
