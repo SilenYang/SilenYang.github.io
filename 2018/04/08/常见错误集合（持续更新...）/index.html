@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="SilenYang@前端笔记">
 <meta property="og:description" content="收录一些平时开发过程中遇到的 BUG ，方便以后查阅。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-20T06:32:21.286Z">
+<meta property="og:updated_time" content="2018-05-18T03:23:40.310Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常见错误集合（持续更新...）">
 <meta name="twitter:description" content="收录一些平时开发过程中遇到的 BUG ，方便以后查阅。">
@@ -353,6 +353,11 @@
 <p>fatal: refusing to merge unrelated histories</p>
 </blockquote>
 <p>这是因为 git 认为本地仓库与远程仓库是不一样的（即使是同名），使用以下命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master --allow-unrelated-histories</span><br></pre></td></tr></table></figure></p>
+<h3 id="使用-fetch-时，不能缓存-cookie"><a href="#使用-fetch-时，不能缓存-cookie" class="headerlink" title="使用 fetch 时，不能缓存 cookie"></a>使用 <code>fetch</code> 时，不能缓存 <code>cookie</code></h3><p>在使用 <code>fetch</code>  api 进行数据的请求的时候，若服务器返回了 <code>cookie</code>，我们在 <code>Chrome devtool</code> 里面也能够看到服务器的返回，但浏览器却并不会缓存下来，解决办法如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fetch(url, &#123;</span><br><span class="line">    credentials: <span class="string">'include'</span> <span class="comment">// 这一行很重要，加上解决</span></span><br><span class="line">&#125;)</span><br><span class="line">.then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(res))</span><br><span class="line">.catch(<span class="function"><span class="params">err</span> =&gt;</span> <span class="built_in">console</span>.error(err))</span><br></pre></td></tr></table></figure></p>
+<h3 id="使用-fetch-上传文件时，node后台接收不到"><a href="#使用-fetch-上传文件时，node后台接收不到" class="headerlink" title="使用 fetch 上传文件时，node后台接收不到"></a>使用 <code>fetch</code> 上传文件时，node后台接收不到</h3><p>在上传文件时，主要是需要用到 <code>formData</code>，若我们在 node 后台使用了 <code>multer</code> 来处理上传的文件，可能会遇到接收不到文件的情况，即 <code>req.files</code> 为空。</p>
+<p>由于 <code>multer</code> 只处理 <code>multipart/form-data</code> 的数据，所有我们可能会在 <code>fetch</code> 请求的头部加上一行参数：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fetch(url, &#123;</span><br><span class="line">    headers: &#123;</span><br><span class="line">        <span class="string">'Content-Type'</span>: <span class="string">'multipart/form-data'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>这就导致了后台接收不到数据。但我们使用 <code>ajax</code> 却能够成功上传，对比一下请求头发现 ajax 的头部 <code>Content-Type</code> 会中会多一个参数 <code>boundary=----WebKitFormBoundary1VsIwNJXtJRhMefR</code> 这种的参数。</p>
+<p>解决办法就是把 <code>fetch</code> 请求头部的 <code>Content-Type</code> 去掉，浏览器会为我们自动加上，这样后台就能够接收到文件了。</p>
 
       
     </div>
@@ -543,7 +548,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-pull"><span class="nav-number">1.</span> <span class="nav-text">git pull</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-pull"><span class="nav-number">1.</span> <span class="nav-text">git pull</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-fetch-时，不能缓存-cookie"><span class="nav-number">2.</span> <span class="nav-text">使用 fetch 时，不能缓存 cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-fetch-上传文件时，node后台接收不到"><span class="nav-number">3.</span> <span class="nav-text">使用 fetch 上传文件时，node后台接收不到</span></a></li></ol></div>
             
 
           </div>
