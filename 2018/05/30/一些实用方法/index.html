@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="homebrew," />
+  <meta name="keywords" content="JavaScript," />
 
 
 
@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="常用的开发工具使用方法">
-<meta name="keywords" content="homebrew">
+<meta name="description" content="一些实用的方法， 帮助我们快速实现一些功能。">
+<meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="常用工具使用">
-<meta property="og:url" content="http://yoursite.com/2018/03/05/常用工具使用/index.html">
+<meta property="og:title" content="一些实用方法">
+<meta property="og:url" content="http://yoursite.com/2018/05/30/一些实用方法/index.html">
 <meta property="og:site_name" content="SilenYang@前端笔记">
-<meta property="og:description" content="常用的开发工具使用方法">
+<meta property="og:description" content="一些实用的方法， 帮助我们快速实现一些功能。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-08T08:20:45.923Z">
+<meta property="og:updated_time" content="2018-06-13T03:38:38.022Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="常用工具使用">
-<meta name="twitter:description" content="常用的开发工具使用方法">
+<meta name="twitter:title" content="一些实用方法">
+<meta name="twitter:description" content="一些实用的方法， 帮助我们快速实现一些功能。">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/05/常用工具使用/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/30/一些实用方法/"/>
 
 
 
 
 
-  <title>常用工具使用 | SilenYang@前端笔记</title>
+  <title>一些实用方法 | SilenYang@前端笔记</title>
   
 
 
@@ -280,7 +280,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/05/常用工具使用/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/30/一些实用方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="SilenYang">
@@ -297,7 +297,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">常用工具使用</h1>
+          <h1 class="post-title" itemprop="name headline">一些实用方法</h1>
         
 
         <div class="post-meta">
@@ -309,8 +309,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-05T11:15:35+08:00">
-                2018-03-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-30T11:03:59+08:00">
+                2018-05-30
               </time>
             
 
@@ -332,8 +332,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/黑科技/" itemprop="url" rel="index">
+                    <span itemprop="name">黑科技</span>
                   </a>
                 </span>
 
@@ -355,10 +366,6 @@
           
 
           
-              <div class="post-description">
-                  常用的开发工具使用方法
-              </div>
-          
 
         </div>
       </header>
@@ -373,26 +380,14 @@
       
 
       
-        <h3 id="Mac-homebrew-的使用"><a href="#Mac-homebrew-的使用" class="headerlink" title="Mac homebrew 的使用"></a>Mac <code>homebrew</code> 的使用</h3><ul>
-<li><p>安装：<code>ruby -e &quot;$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)&quot;</code></p>
-</li>
-<li><p>搜索：<code>brew search node</code></p>
-</li>
-<li><p>查询：<code>brew info node</code> 主要看具体的信息，比如目前的版本，依赖，安装后注意事项等</p>
-</li>
-</ul>
-<ul>
-<li>更新：<code>brew update</code> 这会更新 <code>Homebrew</code> 自己</li>
-</ul>
-<ul>
-<li>检查更新：<code>brew outdated</code> 列出所有安装的软件里可以升级的那些软件</li>
-</ul>
-<ul>
-<li>升级：<code>brew upgrade &lt;xxx&gt;</code> 升级相应的软件，后面不加软件则会升级所有能够升级的软件</li>
-</ul>
-<ul>
-<li>清理：<code>brew cleanup</code> 清理不需要的版本极其安装包缓存</li>
-</ul>
+        <p>一些实用的方法， 帮助我们快速实现一些功能。</p>
+<a id="more"></a>
+<h3 id="将字符串渲染为-DOM-节点"><a href="#将字符串渲染为-DOM-节点" class="headerlink" title="将字符串渲染为 DOM 节点"></a>将字符串渲染为 DOM 节点</h3><p>主要是用 <code>innerHTML</code> 来实现，让浏览器帮我们进行转换，返回的是一个节点数组：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">parseDom</span>(<span class="params">arg</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> objE = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</span><br><span class="line">  objE.innerHTML = arg;</span><br><span class="line">  <span class="keyword">return</span> objE.childNodes; <span class="comment">// []</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="快速实现折线图"><a href="#快速实现折线图" class="headerlink" title="快速实现折线图"></a>快速实现折线图</h3><p>在图标上定位好每个点的位置后，获取这些点，然后调用下列函数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fnLineChart = <span class="function"><span class="keyword">function</span>(<span class="params">eleDots</span>) </span>&#123;</span><br><span class="line">  [].slice.call(eleDots).forEach(<span class="function"><span class="keyword">function</span>(<span class="params">ele, index</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> eleNext = eleDots[index + <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">if</span> (!eleNext) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">const</span> eleLine = ele.querySelector(<span class="string">"i"</span>);</span><br><span class="line">    <span class="keyword">if</span> (!eleLine) &#123;</span><br><span class="line">      eleLine = <span class="built_in">document</span>.createElement(<span class="string">"i"</span>);</span><br><span class="line">      eleLine.setAttribute(<span class="string">"line"</span>, <span class="string">""</span>);</span><br><span class="line">      ele.appendChild(eleLine);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 记录坐标</span></span><br><span class="line">    <span class="keyword">const</span> boundThis = ele.getBoundingClientRect();</span><br><span class="line">    <span class="comment">// 下一个点的坐标</span></span><br><span class="line">    <span class="keyword">const</span> boundNext = eleNext.getBoundingClientRect();</span><br><span class="line">    <span class="comment">// 计算长度和旋转角度</span></span><br><span class="line">    <span class="keyword">const</span> x1 = boundThis.left;</span><br><span class="line">    <span class="keyword">const</span> y1 = boundThis.top;</span><br><span class="line">    <span class="keyword">const</span> x2 = boundNext.left;</span><br><span class="line">    <span class="keyword">const</span> y2 = boundNext.top;</span><br><span class="line">    <span class="comment">// 长度</span></span><br><span class="line">    <span class="keyword">const</span> distance = <span class="built_in">Math</span>.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));</span><br><span class="line">    <span class="comment">// 角度</span></span><br><span class="line">    <span class="keyword">const</span> radius = <span class="built_in">Math</span>.atan((y2 - y1) / (x2 - x1));</span><br><span class="line">    <span class="comment">// 设置线条样式</span></span><br><span class="line">    eleLine.style.width = distance + <span class="string">"px"</span>;</span><br><span class="line">    eleLine.style.msTransform = <span class="string">"rotate("</span> + radius + <span class="string">"rad)"</span>;</span><br><span class="line">    eleLine.style.transform = <span class="string">"rotate("</span> + radius + <span class="string">"rad)"</span>;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>折线的样式需要自定义：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">i</span><span class="selector-attr">[line]</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">transform-origin</span>: left center;</span><br><span class="line">  ...;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -410,7 +405,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/homebrew/" rel="tag"># homebrew</a>
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
           
         </div>
       
@@ -423,8 +418,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/27/nginx的代理配置/" rel="next" title="nginx的代理配置">
-                <i class="fa fa-chevron-left"></i> nginx的代理配置
+              <a href="/2018/04/13/在 VirtualBox 中使用 CentOS 遇到的问题/" rel="next" title="在 VirtualBox 中使用 CentOS 遇到的问题">
+                <i class="fa fa-chevron-left"></i> 在 VirtualBox 中使用 CentOS 遇到的问题
               </a>
             
           </div>
@@ -432,10 +427,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/16/js 读取本地文件与下载数据到本地/" rel="prev" title="js 读取本地文件与下载数据到本地">
-                js 读取本地文件与下载数据到本地 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -581,7 +572,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Mac-homebrew-的使用"><span class="nav-number">1.</span> <span class="nav-text">Mac homebrew 的使用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#将字符串渲染为-DOM-节点"><span class="nav-number">1.</span> <span class="nav-text">将字符串渲染为 DOM 节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速实现折线图"><span class="nav-number">2.</span> <span class="nav-text">快速实现折线图</span></a></li></ol></div>
             
 
           </div>
