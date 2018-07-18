@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="server,nginx," />
+  <meta name="keywords" content="nginx," />
 
 
 
@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="location的基本语法格式为：1location [=|~|~*|^~|@] pattern &amp;#123; ... &amp;#125; [=|~|~*|^~|@] 被称作 location modifier（修饰器/前缀），这会定义 nginx 如何去匹配其后的 pattern ，以及该 pattern 的最基本的属性（简单字符串或正则表达式）">
-<meta name="keywords" content="server,nginx">
+<meta name="description" content="location的基本语法格式为： 1location [=|~|~*|^~|@] pattern &amp;#123; ... &amp;#125; [=|~|~*|^~|@] 被称作 location modifier（修饰器/前缀），这会定义 nginx 如何去匹配其后的 pattern ，以及该 pattern 的最基本的属性（简单字符串或正则表达式）">
+<meta name="keywords" content="nginx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nginx location的匹配方式">
 <meta property="og:url" content="http://yoursite.com/2018/02/26/nginx location的匹配方式/index.html">
 <meta property="og:site_name" content="SilenYang@前端笔记">
-<meta property="og:description" content="location的基本语法格式为：1location [=|~|~*|^~|@] pattern &amp;#123; ... &amp;#125; [=|~|~*|^~|@] 被称作 location modifier（修饰器/前缀），这会定义 nginx 如何去匹配其后的 pattern ，以及该 pattern 的最基本的属性（简单字符串或正则表达式）">
+<meta property="og:description" content="location的基本语法格式为： 1location [=|~|~*|^~|@] pattern &amp;#123; ... &amp;#125; [=|~|~*|^~|@] 被称作 location modifier（修饰器/前缀），这会定义 nginx 如何去匹配其后的 pattern ，以及该 pattern 的最基本的属性（简单字符串或正则表达式）">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-27T06:16:22.399Z">
+<meta property="og:updated_time" content="2018-07-18T09:45:43.010Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx location的匹配方式">
-<meta name="twitter:description" content="location的基本语法格式为：1location [=|~|~*|^~|@] pattern &amp;#123; ... &amp;#125; [=|~|~*|^~|@] 被称作 location modifier（修饰器/前缀），这会定义 nginx 如何去匹配其后的 pattern ，以及该 pattern 的最基本的属性（简单字符串或正则表达式）">
+<meta name="twitter:description" content="location的基本语法格式为： 1location [=|~|~*|^~|@] pattern &amp;#123; ... &amp;#125; [=|~|~*|^~|@] 被称作 location modifier（修饰器/前缀），这会定义 nginx 如何去匹配其后的 pattern ，以及该 pattern 的最基本的属性（简单字符串或正则表达式）">
 
 
 
@@ -339,6 +339,17 @@
 
                 
                 
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务器/nginx/" itemprop="url" rel="index">
+                    <span itemprop="name">nginx</span>
+                  </a>
+                </span>
+
+                
+                
               
             </span>
           
@@ -369,8 +380,10 @@
       
 
       
-        <p><code>location</code>的基本语法格式为：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">location [=|~|~*|^~|@] pattern &#123; ... &#125;</span><br></pre></td></tr></table></figure></p>
-<p><code>[=|~|~*|^~|@]</code> 被称作 <code>location modifier</code>（修饰器/前缀），这会定义 <code>nginx</code> 如何去匹配其后的 <code>pattern</code> ，以及该 <code>pattern</code> 的最基本的属性（简单字符串或正则表达式）<br><a id="more"></a></p>
+        <p><code>location</code>的基本语法格式为：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">location [=|~|~*|^~|@] pattern &#123; ... &#125;</span><br></pre></td></tr></table></figure>
+<p><code>[=|~|~*|^~|@]</code> 被称作 <code>location modifier</code>（修饰器/前缀），这会定义 <code>nginx</code> 如何去匹配其后的 <code>pattern</code> ，以及该 <code>pattern</code> 的最基本的属性（简单字符串或正则表达式）</p>
+<a id="more"></a>
 <h3 id="匹配顺序"><a href="#匹配顺序" class="headerlink" title="匹配顺序"></a>匹配顺序</h3><ol>
 <li><code>=</code>前缀指令匹配，如果匹配成功，则停止其他匹配</li>
 <li>字符串指令匹配，顺序是从长到短，匹配成功的<code>location</code>如果使用<code>^~</code>，则停止正则匹配</li>
@@ -392,24 +405,27 @@
 <h3 id="匹配模式"><a href="#匹配模式" class="headerlink" title="匹配模式"></a>匹配模式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">=   精确匹配（必须全部相等）</span><br><span class="line">^~  uri以某个常规字符串开头，不是正则匹配</span><br><span class="line">~   区分大小写的正则匹配</span><br><span class="line">~*  不区分大小写的正则匹配</span><br><span class="line">@   服务内部跳转（不会被client访问到,只能被内部配置指令所访问，比如 try_files or error_page）</span><br><span class="line">!~  对区分大小写的匹配取反</span><br><span class="line">!~* 对不区分大小写的匹配取反</span><br><span class="line">/   通用匹配，如果没有其他匹配，任何请求都会被匹配到</span><br></pre></td></tr></table></figure>
 <h3 id="匹配例子"><a href="#匹配例子" class="headerlink" title="匹配例子"></a>匹配例子</h3><ol>
 <li><p><code>=</code>精确匹配</p>
- <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> = / &#123;</span><br><span class="line">    <span class="comment"># 规则</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 则匹配到 `http://www.example.com/` 这种请求</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> = / &#123;</span><br><span class="line">    <span class="comment"># 规则</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 则匹配到 `http://www.example.com/` 这种请求</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>~</code>大小写敏感</p>
- <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> <span class="regexp">~ /Example/</span> &#123;</span><br><span class="line">    <span class="comment"># 规则</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#http://www.example.com/Example/  [成功]</span></span><br><span class="line"><span class="comment">#http://www.example.com/example/  [失败]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> <span class="regexp">~ /Example/</span> &#123;</span><br><span class="line">    <span class="comment"># 规则</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#http://www.example.com/Example/  [成功]</span></span><br><span class="line"><span class="comment">#http://www.example.com/example/  [失败]</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>~*</code>大小写忽略</p>
- <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> <span class="regexp">~* /Example/</span> &#123;</span><br><span class="line">    <span class="comment"># 规则</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#http://www.example.com/Example/  [成功]</span></span><br><span class="line"><span class="comment">#http://www.example.com/example/  [成功]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> <span class="regexp">~* /Example/</span> &#123;</span><br><span class="line">    <span class="comment"># 规则</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#http://www.example.com/Example/  [成功]</span></span><br><span class="line"><span class="comment">#http://www.example.com/example/  [成功]</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p><code>^~</code>uri开头匹配</p>
- <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span><span class="regexp"> ^~</span> /abc/ &#123;</span><br><span class="line">    <span class="comment"># 规则</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#http://www.example.com/abc/a.jpg  [成功]</span></span><br><span class="line"><span class="comment">#http://www.example.com/abc/b.mp4  [成功]</span></span><br></pre></td></tr></table></figure>
+<li><p><code>^~</code>uri 开头匹配</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span><span class="regexp"> ^~</span> /abc/ &#123;</span><br><span class="line">    <span class="comment"># 规则</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#http://www.example.com/abc/a.jpg  [成功]</span></span><br><span class="line"><span class="comment">#http://www.example.com/abc/b.mp4  [成功]</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p><code>@</code>nginx内部跳转</p>
- <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="attribute">location</span> /img/ &#123;</span><br><span class="line">    <span class="attribute">error_page</span> <span class="number">404</span> <span class="variable">@img_err</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="attribute">location</span> <span class="variable">@img_err</span> &#123;</span><br><span class="line">    <span class="comment"># 规则</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#以 /img/ 开头的请求，如果链接的状态为 404。则会匹配到 @img_err 这条规则上。</span></span><br></pre></td></tr></table></figure>
+<li><p><code>@</code>nginx 内部跳转</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="attribute">location</span> /img/ &#123;</span><br><span class="line">    <span class="attribute">error_page</span> <span class="number">404</span> <span class="variable">@img_err</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="attribute">location</span> <span class="variable">@img_err</span> &#123;</span><br><span class="line">    <span class="comment"># 规则</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#以 /img/ 开头的请求，如果链接的状态为 404。则会匹配到 @img_err 这条规则上。</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h3 id="常用的匹配"><a href="#常用的匹配" class="headerlink" title="常用的匹配"></a>常用的匹配</h3><p>直接匹配网站根，通过域名访问网站首页比较频繁，使用这个会加速处理:<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> = / &#123;</span><br><span class="line">    <span class="attribute">proxy_pass</span> http://localhost:8080/index</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>处理静态文件请求，这是nginx作为http服务器的强项：<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span><span class="regexp"> ^~</span> /static/ &#123;</span><br><span class="line">    <span class="attribute">root</span> /webroot/static/;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line"><span class="attribute">location</span> <span class="regexp">~* \.(gif|jpg|jpeg|png|css|js|ico)$</span> &#123;</span><br><span class="line">    <span class="attribute">root</span> /webroot/res/;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>通用规则，用来转发动态请求到后端应用服务器：<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> / &#123;</span><br><span class="line">    <span class="attribute">proxy_pass</span> http://localhost:8080/</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="常用的匹配"><a href="#常用的匹配" class="headerlink" title="常用的匹配"></a>常用的匹配</h3><p>直接匹配网站根，通过域名访问网站首页比较频繁，使用这个会加速处理:</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> = / &#123;</span><br><span class="line">    <span class="attribute">proxy_pass</span> http://localhost:8080/index</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>处理静态文件请求，这是 nginx 作为 http 服务器的强项：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span><span class="regexp"> ^~</span> /static/ &#123;</span><br><span class="line">    <span class="attribute">root</span> /webroot/static/;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line"><span class="attribute">location</span> <span class="regexp">~* \.(gif|jpg|jpeg|png|css|js|ico)$</span> &#123;</span><br><span class="line">    <span class="attribute">root</span> /webroot/res/;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通用规则，用来转发动态请求到后端应用服务器：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> / &#123;</span><br><span class="line">    <span class="attribute">proxy_pass</span> http://localhost:8080/</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -426,8 +442,6 @@
     <footer class="post-footer">
       
         <div class="post-tags">
-          
-            <a href="/tags/server/" rel="tag"># server</a>
           
             <a href="/tags/nginx/" rel="tag"># nginx</a>
           
@@ -546,7 +560,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -557,7 +571,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

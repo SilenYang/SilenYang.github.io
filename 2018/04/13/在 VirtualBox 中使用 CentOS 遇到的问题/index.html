@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="SilenYang@前端笔记">
 <meta property="og:description" content="由于在 VirtualBox 安装的是最精简版的 CentOS 7 镜像，所有很多功能都是没有的，像正常的那样使用都会有一些问题。本篇文章记录在这过程中遇到的一些问题，方便以后查阅。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-19T09:20:38.226Z">
+<meta property="og:updated_time" content="2018-07-18T09:45:14.784Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在 VirtualBox 中使用 CentOS 遇到的问题">
 <meta name="twitter:description" content="由于在 VirtualBox 安装的是最精简版的 CentOS 7 镜像，所有很多功能都是没有的，像正常的那样使用都会有一些问题。本篇文章记录在这过程中遇到的一些问题，方便以后查阅。">
@@ -332,7 +332,18 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                  <a href="/categories/服务器/" itemprop="url" rel="index">
+                    <span itemprop="name">服务器</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务器/Linux/" itemprop="url" rel="index">
                     <span itemprop="name">Linux</span>
                   </a>
                 </span>
@@ -343,7 +354,7 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/CentOS/" itemprop="url" rel="index">
+                  <a href="/categories/服务器/Linux/CentOS/" itemprop="url" rel="index">
                     <span itemprop="name">CentOS</span>
                   </a>
                 </span>
@@ -380,30 +391,41 @@
       
 
       
-        <p>由于在 <code>VirtualBox</code> 安装的是最精简版的 <code>CentOS 7</code> 镜像，所有很多功能都是没有的，像正常的那样使用都会有一些问题。本篇文章记录在这过程中遇到的一些问题，方便以后查阅。<br><a id="more"></a></p>
+        <p>由于在 <code>VirtualBox</code> 安装的是最精简版的 <code>CentOS 7</code> 镜像，所有很多功能都是没有的，像正常的那样使用都会有一些问题。本篇文章记录在这过程中遇到的一些问题，方便以后查阅。</p>
+<a id="more"></a>
 <h3 id="yum-upgrade-的问题"><a href="#yum-upgrade-的问题" class="headerlink" title="yum upgrade 的问题"></a><code>yum upgrade</code> 的问题</h3><p>安装好镜像之后，输入 <code>yum upgrade</code> 发现更新失败，这是因为 <code>CentOS 7</code> 默认就是不启动这块网卡，自己给改成启动就好了。具体解决办法如下。</p>
 <h4 id="登陆-root-账户"><a href="#登陆-root-账户" class="headerlink" title="登陆 root 账户"></a>登陆 <code>root</code> 账户</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -s</span><br></pre></td></tr></table></figure>
 <p>输入密码就好</p>
 <h4 id="进入-network-scripts-文件夹"><a href="#进入-network-scripts-文件夹" class="headerlink" title="进入 network-scripts 文件夹"></a>进入 <code>network-scripts</code> 文件夹</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/sysconfig/network-scripts</span><br></pre></td></tr></table></figure>
-<h4 id="编辑-ifcfg-enp0s3-文件"><a href="#编辑-ifcfg-enp0s3-文件" class="headerlink" title="编辑 ifcfg-enp0s3 文件"></a>编辑 <code>ifcfg-enp0s3</code> 文件</h4><p>将最后一行的 <code>ONBOOT</code> 改为 <code>yes</code>：<code>ONBOOT=yes</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi ifcfg-enp0s3</span><br></pre></td></tr></table></figure></p>
+<h4 id="编辑-ifcfg-enp0s3-文件"><a href="#编辑-ifcfg-enp0s3-文件" class="headerlink" title="编辑 ifcfg-enp0s3 文件"></a>编辑 <code>ifcfg-enp0s3</code> 文件</h4><p>将最后一行的 <code>ONBOOT</code> 改为 <code>yes</code>：<code>ONBOOT=yes</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi ifcfg-enp0s3</span><br></pre></td></tr></table></figure>
 <h4 id="重启网络服务"><a href="#重启网络服务" class="headerlink" title="重启网络服务"></a>重启网络服务</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service network restart</span><br></pre></td></tr></table></figure>
 <p>现在再执行 <code>yum upgrade</code> 就行了</p>
-<h3 id="ifconfig-的问题"><a href="#ifconfig-的问题" class="headerlink" title="ifconfig 的问题"></a><code>ifconfig</code> 的问题</h3><p>在使用命令 <code>ifconfig</code> 时，发现以下报错：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-bash: ifconfig: <span class="built_in">command</span> not found</span><br></pre></td></tr></table></figure></p>
+<h3 id="ifconfig-的问题"><a href="#ifconfig-的问题" class="headerlink" title="ifconfig 的问题"></a><code>ifconfig</code> 的问题</h3><p>在使用命令 <code>ifconfig</code> 时，发现以下报错：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-bash: ifconfig: <span class="built_in">command</span> not found</span><br></pre></td></tr></table></figure>
 <h4 id="查看-sbin-ifconfig-文件是否存在"><a href="#查看-sbin-ifconfig-文件是否存在" class="headerlink" title="查看 /sbin/ifconfig 文件是否存在"></a>查看 <code>/sbin/ifconfig</code> 文件是否存在</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /etc/ifconfig</span><br></pre></td></tr></table></figure>
-<h4 id="如果存在"><a href="#如果存在" class="headerlink" title="如果存在"></a>如果存在</h4><p>查看环境变量<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$PATH</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="如果存在"><a href="#如果存在" class="headerlink" title="如果存在"></a>如果存在</h4><p>查看环境变量</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
 <p>如果没有 <code>ifconfig</code> 的命令路径，则需要添加：</p>
-<p>打开 <code>/etc/profile</code> 文件，添加以下内容：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/sbin</span><br></pre></td></tr></table></figure></p>
+<p>打开 <code>/etc/profile</code> 文件，添加以下内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/sbin</span><br></pre></td></tr></table></figure>
 <p>然后重启即可，输入命令：<code>reboot</code></p>
-<h4 id="如果不存在"><a href="#如果不存在" class="headerlink" title="如果不存在"></a>如果不存在</h4><p>则需要安装相应的模块：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install net-tools</span><br></pre></td></tr></table></figure></p>
-<h3 id="使用-nginx"><a href="#使用-nginx" class="headerlink" title="使用 nginx"></a>使用 <code>nginx</code></h3><h4 id="nginx-无法通信"><a href="#nginx-无法通信" class="headerlink" title="nginx 无法通信"></a><code>nginx</code> 无法通信</h4><p>在安装完 <code>nginx</code> 后，需要在防火墙允许进行 <code>http</code> 和 <code>https</code> 通信，不然无法进行通信：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo firewall-cmd --permanent --zone=public --add-service=http </span><br><span class="line">sudo firewall-cmd --permanent --zone=public --add-service=https</span><br><span class="line">sudo firewall-cmd --reload</span><br></pre></td></tr></table></figure></p>
-<p>允许系统开机启动：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> nginx</span><br></pre></td></tr></table></figure></p>
-<h4 id="接口访问失败"><a href="#接口访问失败" class="headerlink" title="接口访问失败"></a>接口访问失败</h4><p>有时候我们在访问接口的时候被拒绝，可能是因为防火墙的原因，我们需要的端口被防火墙屏蔽了，我们可以尝试让防火墙开启端口，例如 8008 端口：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --permanent --add-port=8008/tcp</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure></p>
-<p>当然也可以关闭防火墙，但不推荐：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 暂时关闭防火墙</span></span><br><span class="line">systemctl stop firewalld.service</span><br><span class="line"><span class="comment"># 永久关闭</span></span><br><span class="line">systemctl <span class="built_in">disable</span> firewalld.service</span><br></pre></td></tr></table></figure></p>
+<h4 id="如果不存在"><a href="#如果不存在" class="headerlink" title="如果不存在"></a>如果不存在</h4><p>则需要安装相应的模块：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install net-tools</span><br></pre></td></tr></table></figure>
+<h3 id="使用-nginx"><a href="#使用-nginx" class="headerlink" title="使用 nginx"></a>使用 <code>nginx</code></h3><h4 id="nginx-无法通信"><a href="#nginx-无法通信" class="headerlink" title="nginx 无法通信"></a><code>nginx</code> 无法通信</h4><p>在安装完 <code>nginx</code> 后，需要在防火墙允许进行 <code>http</code> 和 <code>https</code> 通信，不然无法进行通信：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo firewall-cmd --permanent --zone=public --add-service=http</span><br><span class="line">sudo firewall-cmd --permanent --zone=public --add-service=https</span><br><span class="line">sudo firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<p>允许系统开机启动：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> nginx</span><br></pre></td></tr></table></figure>
+<h4 id="接口访问失败"><a href="#接口访问失败" class="headerlink" title="接口访问失败"></a>接口访问失败</h4><p>有时候我们在访问接口的时候被拒绝，可能是因为防火墙的原因，我们需要的端口被防火墙屏蔽了，我们可以尝试让防火墙开启端口，例如 8008 端口：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --permanent --add-port=8008/tcp</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<p>当然也可以关闭防火墙，但不推荐：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 暂时关闭防火墙</span></span><br><span class="line">systemctl stop firewalld.service</span><br><span class="line"><span class="comment"># 永久关闭</span></span><br><span class="line">systemctl <span class="built_in">disable</span> firewalld.service</span><br></pre></td></tr></table></figure>
 <h4 id="setrlimit-failed"><a href="#setrlimit-failed" class="headerlink" title="setrlimit failed"></a><code>setrlimit failed</code></h4><p>访问的时候出现错误：</p>
 <blockquote>
 <p>[alert] 29#0: setrlimit(RLIMIT_NOFILE, 65535) failed (1: Operation not permitted)</p>
 </blockquote>
-<p>这是 <code>nginx</code> 配置的时候配置了 <code>worker_rlimit_nofile</code> 出现的问题，可以使用以下命令解决：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setsebool -P httpd_setrlimit 1</span><br></pre></td></tr></table></figure></p>
+<p>这是 <code>nginx</code> 配置的时候配置了 <code>worker_rlimit_nofile</code> 出现的问题，可以使用以下命令解决：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setsebool -P httpd_setrlimit 1</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -540,7 +562,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -551,7 +573,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

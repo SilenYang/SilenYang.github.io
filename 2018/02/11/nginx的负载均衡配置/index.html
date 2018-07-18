@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="server,nginx," />
+  <meta name="keywords" content="nginx," />
 
 
 
@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="在使用 node 作为服务器时通常会遇到gzip编码，静态文件，HTTP缓存，SSL处理，负载平衡和反向代理等问题、虽然 node 都有它的解决方案，但是性能相较于 ngnix 还是要差一点。并且可以通过nginx强大的缓存来节省您网站的流量从而提高网站的加载速度。 本文主要是关于 ngnix 在负载均衡方面的记录，方便以后的查阅。">
-<meta name="keywords" content="server,nginx">
+<meta name="description" content="在使用 node 作为服务器时通常会遇到 gzip 编码，静态文件，HTTP 缓存，SSL 处理，负载平衡和反向代理等问题、 虽然 node 都有它的解决方案，但是性能相较于 ngnix 还是要差一点。并且可以通过 nginx 强大的缓存来节省您网站的流量从而提高网站的加载速度。 本文主要是关于 ngnix 在负载均衡方面的记录，方便以后的查阅。">
+<meta name="keywords" content="nginx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nginx的负载均衡配置">
 <meta property="og:url" content="http://yoursite.com/2018/02/11/nginx的负载均衡配置/index.html">
 <meta property="og:site_name" content="SilenYang@前端笔记">
-<meta property="og:description" content="在使用 node 作为服务器时通常会遇到gzip编码，静态文件，HTTP缓存，SSL处理，负载平衡和反向代理等问题、虽然 node 都有它的解决方案，但是性能相较于 ngnix 还是要差一点。并且可以通过nginx强大的缓存来节省您网站的流量从而提高网站的加载速度。 本文主要是关于 ngnix 在负载均衡方面的记录，方便以后的查阅。">
+<meta property="og:description" content="在使用 node 作为服务器时通常会遇到 gzip 编码，静态文件，HTTP 缓存，SSL 处理，负载平衡和反向代理等问题、 虽然 node 都有它的解决方案，但是性能相较于 ngnix 还是要差一点。并且可以通过 nginx 强大的缓存来节省您网站的流量从而提高网站的加载速度。 本文主要是关于 ngnix 在负载均衡方面的记录，方便以后的查阅。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-26T09:13:27.767Z">
+<meta property="og:updated_time" content="2018-07-18T09:44:27.694Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx的负载均衡配置">
-<meta name="twitter:description" content="在使用 node 作为服务器时通常会遇到gzip编码，静态文件，HTTP缓存，SSL处理，负载平衡和反向代理等问题、虽然 node 都有它的解决方案，但是性能相较于 ngnix 还是要差一点。并且可以通过nginx强大的缓存来节省您网站的流量从而提高网站的加载速度。 本文主要是关于 ngnix 在负载均衡方面的记录，方便以后的查阅。">
+<meta name="twitter:description" content="在使用 node 作为服务器时通常会遇到 gzip 编码，静态文件，HTTP 缓存，SSL 处理，负载平衡和反向代理等问题、 虽然 node 都有它的解决方案，但是性能相较于 ngnix 还是要差一点。并且可以通过 nginx 强大的缓存来节省您网站的流量从而提高网站的加载速度。 本文主要是关于 ngnix 在负载均衡方面的记录，方便以后的查阅。">
 
 
 
@@ -339,6 +339,17 @@
 
                 
                 
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务器/nginx/" itemprop="url" rel="index">
+                    <span itemprop="name">nginx</span>
+                  </a>
+                </span>
+
+                
+                
               
             </span>
           
@@ -369,20 +380,28 @@
       
 
       
-        <p>在使用 node 作为服务器时通常会遇到gzip编码，静态文件，HTTP缓存，SSL处理，负载平衡和反向代理等问题、虽然 node 都有它的解决方案，但是性能相较于 ngnix 还是要差一点。并且可以通过nginx强大的缓存来节省您网站的流量从而提高网站的加载速度。</p>
-<p>本文主要是关于 ngnix 在负载均衡方面的记录，方便以后的查阅。<br><a id="more"></a></p>
+        <p>在使用 node 作为服务器时通常会遇到 gzip 编码，静态文件，HTTP 缓存，SSL 处理，负载平衡和反向代理等问题、 虽然 node 都有它的解决方案，但是性能相较于 ngnix 还是要差一点。并且可以通过 nginx 强大的缓存来节省您网站的流量从而提高网站的加载速度。</p>
+<p>本文主要是关于 ngnix 在负载均衡方面的记录，方便以后的查阅。</p>
+<a id="more"></a>
 <h2 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h2><p>负载均衡有多重方案，可以按照实际情况选择。</p>
-<h3 id="轮询（默认）"><a href="#轮询（默认）" class="headerlink" title="轮询（默认）"></a>轮询（默认）</h3><p>按照配置的顺序，将客户端的请求依次分发到各个服务器中去。配置如下：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="attribute">upstream</span> server_pool &#123;  </span><br><span class="line">    <span class="attribute">server</span> <span class="number">127.0.0.1:8000</span>;  </span><br><span class="line">    <span class="attribute">server</span> <span class="number">127.0.0.2:8000</span>;  </span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line">server&#123;  </span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;  </span><br><span class="line">    ...  </span><br><span class="line">    <span class="attribute">location</span> / &#123;  </span><br><span class="line">        ...</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://server_pool;  </span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
-<h3 id="最少连接"><a href="#最少连接" class="headerlink" title="最少连接"></a>最少连接</h3><p>请求会被分发到连接数少的服务器中去，配置如下：<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">upstream</span> server_pool &#123;</span><br><span class="line">    least_conn;  //只是多了这一项配置，其他和轮询一致</span><br><span class="line">    <span class="attribute">server</span> <span class="number">127.0.0.1:8000</span>;  </span><br><span class="line">    <span class="attribute">server</span> <span class="number">127.0.0.2:8000</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="基于权重"><a href="#基于权重" class="headerlink" title="基于权重"></a>基于权重</h3><p>可以根据服务器的性能给服务器设置权重，权重越高，被分配的请求数也越多。配置如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">upstream server_pool &#123;</span><br><span class="line">    server <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">8000</span> weight=<span class="number">2</span>;  </span><br><span class="line">    server <span class="number">127.0</span><span class="number">.0</span><span class="number">.2</span>:<span class="number">8000</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>设置<code>weight=2</code>后，每3个请求，第一个服务器会收到两个，第二个服务器会收到一个。</p>
-<h3 id="基于-IP"><a href="#基于-IP" class="headerlink" title="基于 IP"></a>基于 IP</h3><p>前几种方法中，同一客户端的请求可能会被到不同的服务器中去，对于某些需要涉及到 session 的情况会变得复杂，可采取基于 IP 的解决方案，同一 IP 的请求会被分配到同一个服务器中去。配置如下：<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">upstream</span> server_pool &#123;</span><br><span class="line">    ip_hash;  //只是多了这一项配置，其他和轮询一致</span><br><span class="line">    <span class="attribute">server</span> <span class="number">127.0.0.1:8000</span>;  </span><br><span class="line">    <span class="attribute">server</span> <span class="number">127.0.0.2:8000</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="轮询（默认）"><a href="#轮询（默认）" class="headerlink" title="轮询（默认）"></a>轮询（默认）</h3><p>按照配置的顺序，将客户端的请求依次分发到各个服务器中去。配置如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="attribute">upstream</span> server_pool &#123;  </span><br><span class="line">    <span class="attribute">server</span> <span class="number">127.0.0.1:8000</span>;  </span><br><span class="line">    <span class="attribute">server</span> <span class="number">127.0.0.2:8000</span>;  </span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line">server&#123;  </span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;  </span><br><span class="line">    ...  </span><br><span class="line">    <span class="attribute">location</span> / &#123;  </span><br><span class="line">        ...</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://server_pool;  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h3 id="最少连接"><a href="#最少连接" class="headerlink" title="最少连接"></a>最少连接</h3><p>请求会被分发到连接数少的服务器中去，配置如下：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">upstream</span> server_pool &#123;</span><br><span class="line">    least_conn;  //只是多了这一项配置，其他和轮询一致</span><br><span class="line">    <span class="attribute">server</span> <span class="number">127.0.0.1:8000</span>;  </span><br><span class="line">    <span class="attribute">server</span> <span class="number">127.0.0.2:8000</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="基于权重"><a href="#基于权重" class="headerlink" title="基于权重"></a>基于权重</h3><p>可以根据服务器的性能给服务器设置权重，权重越高，被分配的请求数也越多。配置如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">upstream server_pool &#123;</span><br><span class="line">    server <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">8000</span> weight=<span class="number">2</span>;  </span><br><span class="line">    server <span class="number">127.0</span><span class="number">.0</span><span class="number">.2</span>:<span class="number">8000</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>设置<code>weight=2</code>后，每 3 个请求，第一个服务器会收到两个，第二个服务器会收到一个。</p>
+<h3 id="基于-IP"><a href="#基于-IP" class="headerlink" title="基于 IP"></a>基于 IP</h3><p>前几种方法中，同一客户端的请求可能会被到不同的服务器中去，对于某些需要涉及到 session 的情况会变得复杂，可采取基于 IP 的解决方案，同一 IP 的请求会被分配到同一个服务器中去。配置如下：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">upstream</span> server_pool &#123;</span><br><span class="line">    ip_hash;  //只是多了这一项配置，其他和轮询一致</span><br><span class="line">    <span class="attribute">server</span> <span class="number">127.0.0.1:8000</span>;  </span><br><span class="line">    <span class="attribute">server</span> <span class="number">127.0.0.2:8000</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>说明一点，基于权重的负载均衡和基于IP的负载均衡可以组合在一起使用。</p>
+<p>说明一点，基于权重的负载均衡和基于 IP 的负载均衡可以组合在一起使用。</p>
 </blockquote>
-<h3 id="fair（第三方模块-nginx-upstream-fair）"><a href="#fair（第三方模块-nginx-upstream-fair）" class="headerlink" title="fair（第三方模块:nginx-upstream-fair）"></a>fair（第三方模块:nginx-upstream-fair）</h3><p>按服务器的响应时间来分配请求，响应时间短的优先分配。配置如下：<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">upstream</span> server_pool &#123;</span><br><span class="line">    <span class="attribute">server</span> <span class="number">127.0.0.1:8000</span>;  </span><br><span class="line">    <span class="attribute">server</span> <span class="number">127.0.0.2:8000</span>;  </span><br><span class="line">    fair;  //只是多了这一项配置，其他和轮询一致</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="url-hash（第三方模块-nginx-module-url）"><a href="#url-hash（第三方模块-nginx-module-url）" class="headerlink" title="url_hash（第三方模块:nginx-module-url）"></a>url_hash（第三方模块:nginx-module-url）</h3><p>按访问url的hash结果来分配请求，使每个url定向到同一个服务器，服务器为缓存时比较有效。配置如下：<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">upstream</span> server_pool &#123;</span><br><span class="line">    <span class="attribute">server</span> <span class="number">127.0.0.1:8000</span>;  </span><br><span class="line">    <span class="attribute">server</span> <span class="number">127.0.0.2:8000</span>;  </span><br><span class="line">    <span class="attribute">hash</span> <span class="variable">$request_uri</span>;</span><br><span class="line">    <span class="attribute">hash_method</span> crc32;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="fair（第三方模块-nginx-upstream-fair）"><a href="#fair（第三方模块-nginx-upstream-fair）" class="headerlink" title="fair（第三方模块:nginx-upstream-fair）"></a>fair（第三方模块:nginx-upstream-fair）</h3><p>按服务器的响应时间来分配请求，响应时间短的优先分配。配置如下：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">upstream</span> server_pool &#123;</span><br><span class="line">    <span class="attribute">server</span> <span class="number">127.0.0.1:8000</span>;  </span><br><span class="line">    <span class="attribute">server</span> <span class="number">127.0.0.2:8000</span>;  </span><br><span class="line">    fair;  //只是多了这一项配置，其他和轮询一致</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="url-hash（第三方模块-nginx-module-url）"><a href="#url-hash（第三方模块-nginx-module-url）" class="headerlink" title="url_hash（第三方模块:nginx-module-url）"></a>url_hash（第三方模块:nginx-module-url）</h3><p>按访问 url 的 hash 结果来分配请求，使每个 url 定向到同一个服务器，服务器为缓存时比较有效。配置如下：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">upstream</span> server_pool &#123;</span><br><span class="line">    <span class="attribute">server</span> <span class="number">127.0.0.1:8000</span>;  </span><br><span class="line">    <span class="attribute">server</span> <span class="number">127.0.0.2:8000</span>;  </span><br><span class="line">    <span class="attribute">hash</span> <span class="variable">$request_uri</span>;</span><br><span class="line">    <span class="attribute">hash_method</span> crc32;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="单个设备状态设置"><a href="#单个设备状态设置" class="headerlink" title="单个设备状态设置"></a>单个设备状态设置</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">upstream</span> server_pool &#123;</span><br><span class="line">    <span class="attribute">server</span> server1;  </span><br><span class="line">    server server2 backup; // 当其他服务器挂掉或者忙的的时候才会访问该服务器</span><br><span class="line">    server server2 down; // 该节点不参与负载均衡</span><br><span class="line">    max_fails: 1;// 允许请求失败的次数默认为1.当超过最大次数时，返回proxy_next_upstream 模块定义的错误.</span><br><span class="line">    fail_timeout: 100ms;// max_fails次失败后，暂停的时间。</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -398,8 +417,6 @@
     <footer class="post-footer">
       
         <div class="post-tags">
-          
-            <a href="/tags/server/" rel="tag"># server</a>
           
             <a href="/tags/nginx/" rel="tag"># nginx</a>
           
@@ -518,7 +535,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -529,7 +546,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
