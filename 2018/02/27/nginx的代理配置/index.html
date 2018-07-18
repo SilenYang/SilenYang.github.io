@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="websocket 代理配置在 nginx 中想要进行 websocket 的代理需要进行的一些配置：1234567891011121314151617181920http &amp;#123;    map $http_upgrade $connection_upgrade &amp;#123;        default upgrade;        &apos;&apos; close;    &amp;#125;    ups">
+<meta name="description" content="在 nginx中使用代理的一些配置方法">
 <meta name="keywords" content="server,nginx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nginx的代理配置">
 <meta property="og:url" content="http://yoursite.com/2018/02/27/nginx的代理配置/index.html">
 <meta property="og:site_name" content="SilenYang@前端笔记">
-<meta property="og:description" content="websocket 代理配置在 nginx 中想要进行 websocket 的代理需要进行的一些配置：1234567891011121314151617181920http &amp;#123;    map $http_upgrade $connection_upgrade &amp;#123;        default upgrade;        &apos;&apos; close;    &amp;#125;    ups">
+<meta property="og:description" content="在 nginx中使用代理的一些配置方法">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-26T09:14:09.451Z">
+<meta property="og:updated_time" content="2018-07-18T07:53:01.050Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx的代理配置">
-<meta name="twitter:description" content="websocket 代理配置在 nginx 中想要进行 websocket 的代理需要进行的一些配置：1234567891011121314151617181920http &amp;#123;    map $http_upgrade $connection_upgrade &amp;#123;        default upgrade;        &apos;&apos; close;    &amp;#125;    ups">
+<meta name="twitter:description" content="在 nginx中使用代理的一些配置方法">
 
 
 
@@ -369,7 +369,10 @@
       
 
       
-        <h2 id="websocket-代理配置"><a href="#websocket-代理配置" class="headerlink" title="websocket 代理配置"></a>websocket 代理配置</h2><p>在 <code>nginx</code> 中想要进行 <code>websocket</code> 的代理需要进行的一些配置：<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">http</span> &#123;</span><br><span class="line">    <span class="attribute">map</span> <span class="variable">$http_upgrade</span> <span class="variable">$connection_upgrade</span> &#123;</span><br><span class="line">        <span class="attribute">default</span> upgrade;</span><br><span class="line">        '' close;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">upstream</span> websocket &#123;</span><br><span class="line">        <span class="attribute">server</span> <span class="number">127.0.0.1:5000</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="section">server</span> &#123;</span><br><span class="line">        <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">        <span class="attribute">location</span> / &#123;</span><br><span class="line">            <span class="attribute">proxy_pass</span> http://websocket;</span><br><span class="line">            <span class="attribute">proxy_http_version</span> <span class="number">1</span>.<span class="number">1</span>;</span><br><span class="line">            <span class="attribute">proxy_set_header</span> Upgrade <span class="variable">$http_upgrade</span>;</span><br><span class="line">            <span class="attribute">proxy_set_header</span> Connection <span class="variable">$connection_upgrade</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <p>在 <code>nginx</code>中使用代理的一些配置方法</p>
+<a id="more"></a>
+<h2 id="websocket-代理配置"><a href="#websocket-代理配置" class="headerlink" title="websocket 代理配置"></a>websocket 代理配置</h2><p>在 <code>nginx</code> 中想要进行 <code>websocket</code> 的  代理需要进行的一些配置：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">http</span> &#123;</span><br><span class="line">    <span class="attribute">map</span> <span class="variable">$http_upgrade</span> <span class="variable">$connection_upgrade</span> &#123;</span><br><span class="line">        <span class="attribute">default</span> upgrade;</span><br><span class="line">        '' close;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">upstream</span> websocket &#123;</span><br><span class="line">        <span class="attribute">server</span> <span class="number">127.0.0.1:5000</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="section">server</span> &#123;</span><br><span class="line">        <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">        <span class="attribute">location</span> / &#123;</span><br><span class="line">            <span class="attribute">proxy_pass</span> http://websocket;</span><br><span class="line">            <span class="attribute">proxy_http_version</span> <span class="number">1</span>.<span class="number">1</span>;</span><br><span class="line">            <span class="attribute">proxy_set_header</span> Upgrade <span class="variable">$http_upgrade</span>;</span><br><span class="line">            <span class="attribute">proxy_set_header</span> Connection <span class="variable">$connection_upgrade</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
