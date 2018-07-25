@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="SilenYang@前端笔记">
 <meta property="og:description" content="数据库的一些常用操作方法，方便以后查阅">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-18T09:53:23.729Z">
+<meta property="og:updated_time" content="2018-07-25T08:33:03.498Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库操作">
 <meta name="twitter:description" content="数据库的一些常用操作方法，方便以后查阅">
@@ -382,8 +382,31 @@
       
         <p>数据库的一些常用操作方法，方便以后查阅</p>
 <a id="more"></a>
-<h3 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h3><h4 id="查询一个字段中存在，而另一个字段中不存在"><a href="#查询一个字段中存在，而另一个字段中不存在" class="headerlink" title="查询一个字段中存在，而另一个字段中不存在"></a>查询一个字段中存在，而另一个字段中不存在</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 字段为空后者包含某字符串</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">from</span> TableName <span class="keyword">where</span> fileld <span class="keyword">is</span> <span class="literal">null</span> <span class="keyword">or</span> <span class="keyword">like</span> <span class="string">"%$&#123;uid&#125;%"</span> <span class="keyword">and</span> fileld <span class="keyword">is</span> <span class="literal">null</span> <span class="keyword">or</span> fileld <span class="keyword">not</span> <span class="keyword">like</span> <span class="string">"%$&#123;uid&#125;%"</span></span><br></pre></td></tr></table></figure>
-<h4 id="在一个字段中追加一些内容"><a href="#在一个字段中追加一些内容" class="headerlink" title="在一个字段中追加一些内容"></a>在一个字段中追加一些内容</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 在字段前追加</span></span><br><span class="line"><span class="keyword">update</span> TableName <span class="keyword">set</span> fileld=<span class="keyword">CONCAT</span>(<span class="keyword">str</span>, fileld)</span><br><span class="line"><span class="comment">-- 在字段后最佳</span></span><br><span class="line"><span class="keyword">update</span> TableName <span class="keyword">set</span> fileld=<span class="keyword">CONCAT</span>(fileld, <span class="string">''</span>, <span class="keyword">str</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h3><h4 id="查询一个字段中存在，而另一个字段中不存在"><a href="#查询一个字段中存在，而另一个字段中不存在" class="headerlink" title="查询一个字段中存在，而另一个字段中不存在"></a>查询一个字段中存在，而另一个字段中不存在</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 字段为空后者包含某字符串</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">from</span> TableName <span class="keyword">where</span> (<span class="keyword">ifnull</span>(fileld,<span class="string">''</span>)=<span class="string">''</span> <span class="keyword">or</span> <span class="keyword">like</span> <span class="string">"%$&#123;str&#125;%"</span>) <span class="keyword">and</span> (<span class="keyword">ifnull</span>(fileld,<span class="string">''</span>)=<span class="string">''</span> <span class="keyword">or</span> fileld <span class="keyword">not</span> <span class="keyword">like</span> <span class="string">"%$&#123;str&#125;%"</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="在一个字段中追加一些内容"><a href="#在一个字段中追加一些内容" class="headerlink" title="在一个字段中追加一些内容"></a>在一个字段中追加一些内容</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> TableName <span class="keyword">set</span> fileld=<span class="keyword">CONCAT</span>(fileld, <span class="keyword">str</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="在数据库中使用索引加快查询速度"><a href="#在数据库中使用索引加快查询速度" class="headerlink" title="在数据库中使用索引加快查询速度"></a>在数据库中使用索引加快查询速度</h4><p>在查询数据库时，若数据量很大的时候，查询时将会非常的消耗时间，若采用合适的索引将会大大加快查询的时间。</p>
+<h5 id="创建索引"><a href="#创建索引" class="headerlink" title="创建索引"></a>创建索引</h5><p>创建语句如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> [<span class="keyword">UNIQUE</span>|FULLTEXT|SPATIAL] <span class="keyword">INDEX</span> index_name [<span class="keyword">USING</span> index_type]</span><br><span class="line"><span class="keyword">ON</span> table_name (index_col_name,...)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>[UNIQUE|FULLTEXT|SPATIAL]</code>： 表示索引类型，依次为唯一索引、全文索引、空间索引三种，不指定则默认为普通索引。</p>
+</blockquote>
+<blockquote>
+<p><code>index_name</code>： 表示索引的名称，用户自定义，便于以后对该索引进行修改等管理操作。</p>
+</blockquote>
+<blockquote>
+<p><code>index_type</code>： 索引的具体实现方式，有两种不同形式的索引——<code>BTREE</code>索引和<code>HASH</code>索引。</p>
+</blockquote>
+<blockquote>
+<p><code>table_name</code>： 需要创建索引的表。</p>
+</blockquote>
+<blockquote>
+<p><code>index_col_name</code>： 需要创建索引的字段名称，多个字段用逗号分隔开。也可以用字段的一部分来创建索引，需要在字段后加上<code>(length)</code>即可。</p>
+</blockquote>
+<p>在已存在的表中添加索引：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name</span><br><span class="line"><span class="keyword">ADD</span> [<span class="keyword">UNIQUE</span>|FULLTEXT|SPATIAL] <span class="keyword">INDEX</span> index_name (index_col_name,...) [<span class="keyword">USING</span> index_type]</span><br></pre></td></tr></table></figure>
+<h5 id="删除索引"><a href="#删除索引" class="headerlink" title="删除索引"></a>删除索引</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name <span class="keyword">DROP</span> <span class="keyword">INDEX</span> index_name;</span><br></pre></td></tr></table></figure>
+<h5 id="修改索引"><a href="#修改索引" class="headerlink" title="修改索引"></a>修改索引</h5><p>在 <code>MySQL</code> 中没有修改索引的直接指令，可通过先删除再创建同名的错音实现修改</p>
+<h5 id="查看索引"><a href="#查看索引" class="headerlink" title="查看索引"></a>查看索引</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> <span class="keyword">INDEX</span> <span class="keyword">FROM</span> table_name [<span class="keyword">FROM</span> db_name]</span><br><span class="line"><span class="comment">-- or</span></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">INDEX</span> <span class="keyword">FROM</span> [db_name.]table_name</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -568,7 +591,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql"><span class="nav-number">1.</span> <span class="nav-text">mysql</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#查询一个字段中存在，而另一个字段中不存在"><span class="nav-number">1.1.</span> <span class="nav-text">查询一个字段中存在，而另一个字段中不存在</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在一个字段中追加一些内容"><span class="nav-number">1.2.</span> <span class="nav-text">在一个字段中追加一些内容</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql"><span class="nav-number">1.</span> <span class="nav-text">mysql</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#查询一个字段中存在，而另一个字段中不存在"><span class="nav-number">1.1.</span> <span class="nav-text">查询一个字段中存在，而另一个字段中不存在</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在一个字段中追加一些内容"><span class="nav-number">1.2.</span> <span class="nav-text">在一个字段中追加一些内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在数据库中使用索引加快查询速度"><span class="nav-number">1.3.</span> <span class="nav-text">在数据库中使用索引加快查询速度</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#创建索引"><span class="nav-number">1.3.1.</span> <span class="nav-text">创建索引</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#删除索引"><span class="nav-number">1.3.2.</span> <span class="nav-text">删除索引</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修改索引"><span class="nav-number">1.3.3.</span> <span class="nav-text">修改索引</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看索引"><span class="nav-number">1.3.4.</span> <span class="nav-text">查看索引</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
