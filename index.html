@@ -371,18 +371,14 @@
 
       
         
-          
-            <p>在这篇文章中将介绍一些在 <code>flutter</code> 中，布局时使用到的一些属性，方便以后查阅。</p>
-<h3 id="在-flutter-中使用-boxShadow"><a href="#在-flutter-中使用-boxShadow" class="headerlink" title="在 flutter 中使用 boxShadow"></a>在 <code>flutter</code> 中使用 <code>boxShadow</code></h3><p>在页面布局时中，难免会用到一些阴影，在 <code>flutter</code> 中，阴影的使用有很大的区别。例如要创建  如下的盒子：</p>
-<img src="/2018/08/22/在%20flutter%20中一些属性的使用/boxshadow.jpg" title="阴影布局">
-<p>需要的代码则为</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Container(</span><br><span class="line">    height: <span class="number">138.0</span>,</span><br><span class="line">    width: <span class="number">335.0</span>,</span><br><span class="line">    child: <span class="keyword">new</span> Text(<span class="string">'data'</span>),</span><br><span class="line">    alignment: Alignment.center,</span><br><span class="line">    decoration: <span class="keyword">new</span> BoxDecoration(</span><br><span class="line">        color: Color(<span class="number">0xffffffff</span>),</span><br><span class="line">        borderRadius: BorderRadius.all(<span class="keyword">new</span> Radius.circular(<span class="number">10.0</span>)),</span><br><span class="line">        border: <span class="keyword">new</span> Border.all(</span><br><span class="line">            color: Colors.grey,</span><br><span class="line">            width: <span class="number">1.0</span>,</span><br><span class="line">        ),</span><br><span class="line">        boxShadow: [</span><br><span class="line">            <span class="keyword">new</span> BoxShadow(</span><br><span class="line">                color: Colors.grey,</span><br><span class="line">                offset: Offset.zero,</span><br><span class="line">                blurRadius: <span class="number">20.0</span>,</span><br><span class="line">            ),</span><br><span class="line">        ]</span><br><span class="line">    ),</span><br><span class="line">)),</span><br></pre></td></tr></table></figure>
-<p>在 <code>flutter</code> 中，<code>boxShadow</code> 需要定义在 <code>decoration</code> 属性中，并他的类型为 <code>List&lt;BoxShadow&gt;</code>，是一个数组，多个 <code>boxShadow</code>属性会叠加，数组后的阴影会叠加在前面的阴影之上。</p>
-<p>在使用阴影的时候，必须要加上背景色，不然会出现镂空的情况：</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">decoration: <span class="keyword">new</span> BoxDecoration(</span><br><span class="line">    <span class="comment">// color: Color(0xffffffff),</span></span><br><span class="line">    boxShadow: [</span><br><span class="line">        <span class="keyword">new</span> BoxShadow(</span><br><span class="line">            offset: Offset(<span class="number">0.0</span>, <span class="number">-5.0</span>),</span><br><span class="line">            color: Colors.blue,</span><br><span class="line">            blurRadius: <span class="number">15.0</span>,</span><br><span class="line">        ),</span><br><span class="line">        <span class="keyword">new</span> BoxShadow(</span><br><span class="line">            color: Colors.grey,</span><br><span class="line">            offset: Offset.zero,</span><br><span class="line">            blurRadius: <span class="number">20.0</span>,</span><br><span class="line">        ),</span><br><span class="line">    ]),</span><br><span class="line">)),</span><br></pre></td></tr></table></figure>
-
-
-          
+          <p>在这篇文章中将介绍一些在 <code>flutter</code> 中，布局时使用到的一些属性，方便以后查阅。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/22/在 flutter 中一些属性的使用/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
