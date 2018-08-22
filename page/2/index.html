@@ -279,6 +279,165 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/26/nginx location的匹配方式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SilenYang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SilenYang@前端笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/26/nginx location的匹配方式/" itemprop="url">nginx location的匹配方式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-26T10:04:44+08:00">
+                2018-02-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务器/" itemprop="url" rel="index">
+                    <span itemprop="name">服务器</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务器/nginx/" itemprop="url" rel="index">
+                    <span itemprop="name">nginx</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><code>location</code>的基本语法格式为：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">location [=|~|~*|^~|@] pattern &#123; ... &#125;</span><br></pre></td></tr></table></figure>
+<p><code>[=|~|~*|^~|@]</code> 被称作 <code>location modifier</code>（修饰器/前缀），这会定义 <code>nginx</code> 如何去匹配其后的 <code>pattern</code> ，以及该 <code>pattern</code> 的最基本的属性（简单字符串或正则表达式）</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/02/26/nginx location的匹配方式/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/11/nginx的负载均衡配置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -843,9 +1002,9 @@
 
       
         
-          <p>在某些应用场景中，需要我们点击某个地方把页面滚动到某处。通常我们会使用js去计算摇滚动到的地方距离页面顶部的距离，然后使用<code>document.scrollTop = xxx</code>来控制页面的滚动距离。</p>
+          <p>在某些应用场景中，需要我们点击某个地方把页面滚动到某处。通常我们会使用 js 去计算摇滚动到的地方距离页面顶部的距离，然后使用<code>document.scrollTop = xxx</code>来控制页面的滚动距离。</p>
 <p>在页面结构比较简单的时候，这个距离比较好计算，但是当页面结构很复杂的时候，距离的计算就比较复杂了。</p>
-<p>在Web API中存在两个很实用的方法可以快速帮我们实现这个需求，它们就是<code>scrollIntoView</code>与 <code>scrollIntoViewIfNeeded</code>。</p>
+<p>在 Web API 中存在两个很实用的方法可以快速帮我们实现这个需求，它们就是<code>scrollIntoView</code>与 <code>scrollIntoViewIfNeeded</code>。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/10/10/页面滚动到某个元素/#more" rel="contents">
@@ -940,7 +1099,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -951,7 +1110,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -962,7 +1121,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
