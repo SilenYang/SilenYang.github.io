@@ -86,20 +86,21 @@
 
 
 
-<meta name="description" content="在一个 APP 中，标题栏是必不可少的。在 flutter 中，创建一个标题栏也很容易实现，这篇文章将会讲述在 flutter 中定制化标题栏。">
+<meta name="description" content="在 APP 中，导航栏是必不可少的。在 flutter 中，创建一个导航栏也很容易实现，这篇文章将会讲述在 flutter 中定制化导航栏。">
 <meta name="keywords" content="flutter">
 <meta property="og:type" content="article">
 <meta property="og:title" content="flutter自定义标题栏">
 <meta property="og:url" content="http://yoursite.com/2018/12/03/flutter自定义标题栏/index.html">
 <meta property="og:site_name" content="SilenYang@前端笔记">
-<meta property="og:description" content="在一个 APP 中，标题栏是必不可少的。在 flutter 中，创建一个标题栏也很容易实现，这篇文章将会讲述在 flutter 中定制化标题栏。">
+<meta property="og:description" content="在 APP 中，导航栏是必不可少的。在 flutter 中，创建一个导航栏也很容易实现，这篇文章将会讲述在 flutter 中定制化导航栏。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/12/03/flutter自定义标题栏/flutter.jpeg">
 <meta property="og:image" content="http://yoursite.com/2018/12/03/flutter自定义标题栏/default_title.jpg">
-<meta property="og:updated_time" content="2018-12-03T06:57:52.190Z">
+<meta property="og:image" content="http://yoursite.com/2018/12/03/flutter自定义标题栏/white_title.jpg">
+<meta property="og:updated_time" content="2018-12-03T07:39:24.485Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="flutter自定义标题栏">
-<meta name="twitter:description" content="在一个 APP 中，标题栏是必不可少的。在 flutter 中，创建一个标题栏也很容易实现，这篇文章将会讲述在 flutter 中定制化标题栏。">
+<meta name="twitter:description" content="在 APP 中，导航栏是必不可少的。在 flutter 中，创建一个导航栏也很容易实现，这篇文章将会讲述在 flutter 中定制化导航栏。">
 <meta name="twitter:image" content="http://yoursite.com/2018/12/03/flutter自定义标题栏/flutter.jpeg">
 
 
@@ -373,13 +374,18 @@
 
       
         <img src="/2018/12/03/flutter自定义标题栏/flutter.jpeg">
-<p>在一个 APP 中，标题栏是必不可少的。在 <code>flutter</code> 中，创建一个标题栏也很容易实现，这篇文章将会讲述在 <code>flutter</code> 中定制化标题栏。</p>
+<p>在 APP 中，导航栏是必不可少的。在 <code>flutter</code> 中，创建一个导航栏也很容易实现，这篇文章将会讲述在 <code>flutter</code> 中定制化导航栏。</p>
 <a id="more"></a>
-<p>在 <code>flutter</code> 中创建一个标题栏很简单，如下：</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> MaterialApp(</span><br><span class="line">      title: <span class="string">'flutter-demo'</span>,</span><br><span class="line">      debugShowCheckedModeBanner: <span class="keyword">false</span>,</span><br><span class="line">      home: Scaffold(</span><br><span class="line">        appBar: AppBar(</span><br><span class="line">          title: Text(<span class="string">'Title'</span>),</span><br><span class="line">        ),</span><br><span class="line">        body: Center(</span><br><span class="line">          child: Text(<span class="string">'data'</span>),</span><br><span class="line">        ),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;s</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这段代码会生成这样的标题栏：</p>
-<img src="/2018/12/03/flutter自定义标题栏/default_title.jpg" title="默认标题栏">
-<p>但我们的 APP 中肯定会根据页面的功能需要不同的种类的标题栏，这就需要我们定制标题栏了。</p>
+<p>在 <code>flutter</code> 中创建一个导航栏很简单，如下：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> MaterialApp(</span><br><span class="line">      title: <span class="string">'flutter-demo'</span>,</span><br><span class="line">      debugShowCheckedModeBanner: <span class="keyword">false</span>,</span><br><span class="line">      home: Scaffold(</span><br><span class="line">        appBar: AppBar(</span><br><span class="line">          title: Text(<span class="string">'Title'</span>),</span><br><span class="line">        ),</span><br><span class="line">        body: Center(</span><br><span class="line">          child: Text(<span class="string">'data'</span>),</span><br><span class="line">        ),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这段代码会生成这样的导航栏：</p>
+<img src="/2018/12/03/flutter自定义标题栏/default_title.jpg" title="默认导航栏">
+<p>但我们的 APP 中肯定会根据页面的功能需要不同的种类的导航栏，这就需要我们定制导航栏了。</p>
+<h3 id="Theme"><a href="#Theme" class="headerlink" title="Theme"></a>Theme</h3><p>在 <code>MaterialApp</code> 中，存在一个 <code>theme</code> 的主题属性用来配置主题，也包括导航栏，当然这是全局性的:</p>
+<p>在 <code>ThemeData</code> 中，配置的属性会被页面内的元素所继承。 其中包含很多的属性，但与导航栏有关的属性为 <code>primaryColor</code> 原色属性，定义 APP 的主体颜色。</p>
+<p>定义 <code>primaryColor</code> 后，导航栏会根据设置的颜色自动设置背景色与字体的颜色，如：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">MaterialApp(</span><br><span class="line">    ...</span><br><span class="line">    theme: ThemeData(</span><br><span class="line">        primaryColor: Colors.white,</span><br><span class="line">    ),</span><br><span class="line">    ...</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<img src="/2018/12/03/flutter自定义标题栏/white_title.jpg" title="白色主题">
 
       
     </div>
@@ -470,8 +476,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -545,6 +560,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Theme"><span class="nav-number">1.</span> <span class="nav-text">Theme</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
