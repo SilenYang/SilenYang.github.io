@@ -89,20 +89,20 @@
 <meta name="description" content="在 APP 中，导航栏是必不可少的。在 flutter 中，创建一个导航栏也很容易实现，这篇文章将会讲述在 flutter 中定制化导航栏。">
 <meta name="keywords" content="flutter">
 <meta property="og:type" content="article">
-<meta property="og:title" content="flutter自定义标题栏">
-<meta property="og:url" content="http://yoursite.com/2018/12/03/flutter自定义标题栏/index.html">
+<meta property="og:title" content="flutter导航栏">
+<meta property="og:url" content="http://yoursite.com/2018/11/13/flutter导航栏/index.html">
 <meta property="og:site_name" content="SilenYang@前端笔记">
 <meta property="og:description" content="在 APP 中，导航栏是必不可少的。在 flutter 中，创建一个导航栏也很容易实现，这篇文章将会讲述在 flutter 中定制化导航栏。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/12/03/flutter自定义标题栏/flutter.jpeg">
-<meta property="og:image" content="http://yoursite.com/2018/12/03/flutter自定义标题栏/default_title.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/12/03/flutter自定义标题栏/white_title.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/12/03/flutter自定义标题栏/custom_title.jpg">
-<meta property="og:updated_time" content="2018-12-08T09:37:59.359Z">
+<meta property="og:image" content="http://yoursite.com/2018/11/13/flutter导航栏/flutter.jpeg">
+<meta property="og:image" content="http://yoursite.com/2018/11/13/flutter导航栏/default_title.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/11/13/flutter导航栏/white_title.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/11/13/flutter导航栏/custom_title.jpg">
+<meta property="og:updated_time" content="2018-12-13T02:35:51.697Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="flutter自定义标题栏">
+<meta name="twitter:title" content="flutter导航栏">
 <meta name="twitter:description" content="在 APP 中，导航栏是必不可少的。在 flutter 中，创建一个导航栏也很容易实现，这篇文章将会讲述在 flutter 中定制化导航栏。">
-<meta name="twitter:image" content="http://yoursite.com/2018/12/03/flutter自定义标题栏/flutter.jpeg">
+<meta name="twitter:image" content="http://yoursite.com/2018/11/13/flutter导航栏/flutter.jpeg">
 
 
 
@@ -132,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/12/03/flutter自定义标题栏/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/11/13/flutter导航栏/"/>
 
 
 
 
 
-  <title>flutter自定义标题栏 | SilenYang@前端笔记</title>
+  <title>flutter导航栏 | SilenYang@前端笔记</title>
   
 
 
@@ -285,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/03/flutter自定义标题栏/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/flutter导航栏/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="SilenYang">
@@ -302,7 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">flutter自定义标题栏</h1>
+          <h1 class="post-title" itemprop="name headline">flutter导航栏</h1>
         
 
         <div class="post-meta">
@@ -314,8 +314,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-03T14:27:42+08:00">
-                2018-12-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-13T14:27:42+08:00">
+                2018-11-13
               </time>
             
 
@@ -374,19 +374,19 @@
       
 
       
-        <img src="/2018/12/03/flutter自定义标题栏/flutter.jpeg">
+        <img src="/2018/11/13/flutter导航栏/flutter.jpeg">
 <p>在 APP 中，导航栏是必不可少的。在 <code>flutter</code> 中，创建一个导航栏也很容易实现，这篇文章将会讲述在 <code>flutter</code> 中定制化导航栏。</p>
 <a id="more"></a>
 <p>在 <code>flutter</code> 中创建一个导航栏很简单，如下：</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> MaterialApp(</span><br><span class="line">      title: <span class="string">'flutter-demo'</span>,</span><br><span class="line">      debugShowCheckedModeBanner: <span class="keyword">false</span>,</span><br><span class="line">      home: Scaffold(</span><br><span class="line">        appBar: AppBar(</span><br><span class="line">          title: Text(<span class="string">'Title'</span>),</span><br><span class="line">        ),</span><br><span class="line">        body: Center(</span><br><span class="line">          child: Text(<span class="string">'data'</span>),</span><br><span class="line">        ),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这段代码会生成这样的导航栏：</p>
-<img src="/2018/12/03/flutter自定义标题栏/default_title.jpg" title="默认导航栏">
+<img src="/2018/11/13/flutter导航栏/default_title.jpg" title="默认导航栏">
 <p>但我们的 APP 中肯定会根据页面的功能需要不同的种类的导航栏，这就需要我们定制导航栏了。</p>
 <h3 id="Theme"><a href="#Theme" class="headerlink" title="Theme"></a>Theme</h3><p>在 <code>MaterialApp</code> 中，存在一个 <code>theme</code> 的主题属性用来配置主题，也包括导航栏，当然这是全局性的:</p>
 <p>在 <code>ThemeData</code> 中，配置的属性会被页面内的元素所继承。 其中包含很多的属性，但与导航栏有关的属性为 <code>primaryColor</code> 原色属性，定义 APP 的主体颜色。</p>
 <p>定义 <code>primaryColor</code> 后，导航栏会根据设置的颜色自动设置背景色与字体的颜色，如：</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">MaterialApp(</span><br><span class="line">    ...</span><br><span class="line">    theme: ThemeData(</span><br><span class="line">        primaryColor: Colors.white,</span><br><span class="line">    ),</span><br><span class="line">    ...</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<img src="/2018/12/03/flutter自定义标题栏/white_title.jpg" title="白色主题">
+<img src="/2018/11/13/flutter导航栏/white_title.jpg" title="白色主题">
 <p>如果想具体改变导航栏的其他控件样式，则需要用到其他属性：</p>
 <ul>
 <li><code>primaryTextTheme</code> 改变标题的样式，如字体的颜色、字体大小等属性。</li>
@@ -395,7 +395,7 @@
 <li><code>elevation</code> 改变导航栏下面的阴影，默认是 4.0。</li>
 </ul>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">MaterialApp(</span><br><span class="line">    ...</span><br><span class="line">    theme: ThemeData(</span><br><span class="line">        primaryColor: Colors.white,</span><br><span class="line">        primaryTextTheme: TextTheme(</span><br><span class="line">        title: TextStyle(color: Colors.purple),</span><br><span class="line">        ),</span><br><span class="line">        primaryIconTheme: IconThemeData(color: Colors.blue),</span><br><span class="line">    ),</span><br><span class="line">    home: Scaffold(</span><br><span class="line">        appBar: AppBar(</span><br><span class="line">          leading: Center(</span><br><span class="line">            child: Icon(Icons.arrow_back_ios),</span><br><span class="line">          ),</span><br><span class="line">          centerTitle: <span class="keyword">true</span>,</span><br><span class="line">          actions: &lt;Widget&gt;[</span><br><span class="line">            IconButton(icon: Icon(Icons.list), onPressed: () &#123;&#125;)</span><br><span class="line">          ],</span><br><span class="line">          title: Text(<span class="string">'Title'</span>),</span><br><span class="line">          elevation: <span class="number">1.0</span>,</span><br><span class="line">        ),</span><br><span class="line">    ),</span><br><span class="line">    ...</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<img src="/2018/12/03/flutter自定义标题栏/custom_title.jpg" title="自定义导航栏">
+<img src="/2018/11/13/flutter导航栏/custom_title.jpg" title="自定义导航栏">
 <p>在 <code>theme</code> 中定义的这些属性是全局性的。</p>
 <h3 id="AppBar"><a href="#AppBar" class="headerlink" title="AppBar"></a><code>AppBar</code></h3><p>在 <code>Scaffold</code> 控件的 <code>AppBar</code> 属性中也具有和 <code>ThemeData</code> 中的属性。我们可以在 <code>AppBar</code> 中对全局的属性进行覆盖。</p>
 
@@ -437,6 +437,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/12/flutter路由/" rel="prev" title="flutter路由">
+                flutter路由 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -517,7 +521,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
