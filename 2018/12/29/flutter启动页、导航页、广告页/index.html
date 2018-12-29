@@ -94,12 +94,13 @@
 <meta property="og:site_name" content="SilenYang@前端笔记">
 <meta property="og:description" content="在 APP 中，启动页、导航页、广告页必不可少，本文记录在 Flutter 中的实现方式。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/12/29/flutter启动页、导航页、广告页/splash-guide.gif">
 <meta property="og:image" content="http://yoursite.com/2018/12/29/flutter启动页、导航页、广告页/splash.gif">
-<meta property="og:updated_time" content="2018-12-29T07:19:42.613Z">
+<meta property="og:updated_time" content="2018-12-29T07:39:35.230Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="flutter启动页、导航页、广告页">
 <meta name="twitter:description" content="在 APP 中，启动页、导航页、广告页必不可少，本文记录在 Flutter 中的实现方式。">
-<meta name="twitter:image" content="http://yoursite.com/2018/12/29/flutter启动页、导航页、广告页/splash.gif">
+<meta name="twitter:image" content="http://yoursite.com/2018/12/29/flutter启动页、导航页、广告页/splash-guide.gif">
 
 
 
@@ -372,8 +373,9 @@
 
       
         <p>在 APP 中，启动页、导航页、广告页必不可少，本文记录在 <code>Flutter</code> 中的实现方式。</p>
-<img src="/2018/12/29/flutter启动页、导航页、广告页/splash.gif" title="启动页加广告页">
 <a id="more"></a>
+<img src="/2018/12/29/flutter启动页、导航页、广告页/splash-guide.gif" title="启动页加引导页">
+<img src="/2018/12/29/flutter启动页、导航页、广告页/splash.gif" title="启动页加广告页">
 <p>我们需要把启动页作为整个项目的开始页面，并在路由中添加主页面的路由：</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">MaterialApp(</span><br><span class="line">    ...</span><br><span class="line">    routes: &#123;</span><br><span class="line">        <span class="string">'/MainPage'</span>: (ctx) =&gt; MainPage(),</span><br><span class="line">    &#125;,</span><br><span class="line">    home: SplashPage(),</span><br><span class="line">    ...</span><br><span class="line">）</span><br></pre></td></tr></table></figure>
 <p>在 <code>SplashPage</code> 中我们需要创建 <code>StatefulWidget</code> 来保存状态。</p>
@@ -385,6 +387,8 @@
 <p>通过重写 <code>initState</code> 来初始化数据，我们在里面进行模拟通过网络请求拉取数据来判断展示页面：</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// SplashPage.dart</span></span><br><span class="line"><span class="built_in">int</span> status = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@override</span></span><br><span class="line"><span class="keyword">void</span> initState() &#123;</span><br><span class="line">  <span class="keyword">super</span>.initState();</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">'init splash'</span>);</span><br><span class="line">  <span class="comment">// mock network</span></span><br><span class="line">  Future.delayed(<span class="built_in">Duration</span>(seconds: <span class="number">2</span>)).then((_) &#123;</span><br><span class="line">    <span class="keyword">return</span> Random().nextInt(<span class="number">2</span>) + <span class="number">1</span>;</span><br><span class="line">  &#125;).then((_sta) &#123;</span><br><span class="line">    <span class="keyword">if</span> (_sta == <span class="number">1</span>)</span><br><span class="line">      _initGuide();</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      _initAds();</span><br><span class="line">    setState(() &#123;</span><br><span class="line">      status = _sta;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>通过 <code>Future</code> 来模拟网络请求的延时， 获取数据来判断显示那种页面，这里用随机返回 1 或 2 来模拟数据。</p>
+<p>页面通过 <code>Stack</code> Widget 进行堆叠，使用 <code>Offstage</code> Widget 来判断是否显示该 Widget。</p>
+<p>页面具体实现请看 <a href="https://github.com/SilenYang/flutter-demo/blob/master/lib/pages/splashPage.dart" target="_blank" rel="noopener">这里</a></p>
 
       
     </div>
