@@ -94,10 +94,12 @@
 <meta property="og:site_name" content="SilenYang@前端笔记">
 <meta property="og:description" content="在 APP 中，启动页、导航页、广告页必不可少，本文记录在 Flutter 中的实现方式。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-29T07:18:04.267Z">
+<meta property="og:image" content="http://yoursite.com/2018/12/29/flutter启动页、导航页、广告页/splash.gif">
+<meta property="og:updated_time" content="2018-12-29T07:19:42.613Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="flutter启动页、导航页、广告页">
 <meta name="twitter:description" content="在 APP 中，启动页、导航页、广告页必不可少，本文记录在 Flutter 中的实现方式。">
+<meta name="twitter:image" content="http://yoursite.com/2018/12/29/flutter启动页、导航页、广告页/splash.gif">
 
 
 
@@ -370,7 +372,7 @@
 
       
         <p>在 APP 中，启动页、导航页、广告页必不可少，本文记录在 <code>Flutter</code> 中的实现方式。</p>
-
+<img src="/2018/12/29/flutter启动页、导航页、广告页/splash.gif" title="启动页加广告页">
 <a id="more"></a>
 <p>我们需要把启动页作为整个项目的开始页面，并在路由中添加主页面的路由：</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">MaterialApp(</span><br><span class="line">    ...</span><br><span class="line">    routes: &#123;</span><br><span class="line">        <span class="string">'/MainPage'</span>: (ctx) =&gt; MainPage(),</span><br><span class="line">    &#125;,</span><br><span class="line">    home: SplashPage(),</span><br><span class="line">    ...</span><br><span class="line">）</span><br></pre></td></tr></table></figure>
