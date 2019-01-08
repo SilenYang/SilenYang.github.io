@@ -97,7 +97,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/12/12/flutter路由与导航/router.gif">
 <meta property="og:image" content="http://yoursite.com/2018/12/12/flutter路由与导航/active-router.gif">
 <meta property="og:image" content="http://yoursite.com/2018/12/12/flutter路由与导航/animate-router.gif">
-<meta property="og:updated_time" content="2018-12-17T09:14:14.686Z">
+<meta property="og:updated_time" content="2019-01-08T02:19:39.187Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="flutter路由与导航">
 <meta name="twitter:description" content="在 flutter 中，路由（Route）与导航器（Navigator）搭配在一起，但能够实现页面的跳转。">
@@ -383,7 +383,7 @@
 <h3 id="弹出路由"><a href="#弹出路由" class="headerlink" title="弹出路由"></a>弹出路由</h3><p>路由不一定需要掩盖整个屏幕，<code>PopupRoutes</code> 覆盖屏幕，屏幕颜色只能部分不透明，以允许当前屏幕显示。弹出路由是模态的，因为它们阻止了下面的控件的输入。</p>
 <p>框架有创建和显示弹出路由的功能，例如：<code>showDialog</code>、<code>showMenu</code> 和 <code>showModalBottomSheet</code>。这些功能如上所述返回其推送的路由的 <code>Future</code> ，调用时可以等待返回的值在路由弹出时采取行动，或者发现路由的值。</p>
 <p>还有一些创建弹出路由的控件，如<code>PopupMenuButton</code>和<code>DropdownButton</code>。这些控件创建<code>PopupRoute</code>的内部子类，并使用路由的<code>push</code>和<code>pop</code>方法来显示和关闭它们。</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Future&lt;<span class="built_in">Null</span>&gt; fun() <span class="keyword">async</span> &#123;</span><br><span class="line">    <span class="built_in">bool</span> value = <span class="keyword">await</span> showDialog(</span><br><span class="line">      context: <span class="string">'context'</span>,</span><br><span class="line">      barrierDismissible: <span class="keyword">true</span>,</span><br><span class="line">      child: <span class="keyword">new</span> Center(</span><br><span class="line">        child: <span class="keyword">new</span> GestureDetector(</span><br><span class="line">          child: <span class="keyword">new</span> Text(<span class="string">"sure"</span>),</span><br><span class="line">          onTap: () &#123; Navigator.of(context).pop(<span class="keyword">true</span>); &#125;,</span><br><span class="line">        ),</span><br><span class="line">      )</span><br><span class="line">    );</span><br><span class="line">    <span class="comment">// use value do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Future&lt;<span class="built_in">Null</span>&gt; fun() <span class="keyword">async</span> &#123;</span><br><span class="line">    <span class="built_in">bool</span> value = <span class="keyword">await</span> showDialog(</span><br><span class="line">      context: <span class="string">'context'</span>,</span><br><span class="line">      barrierDismissible: <span class="keyword">true</span>,</span><br><span class="line">      child: <span class="keyword">new</span> Center(</span><br><span class="line">        child: <span class="keyword">new</span> GestureDetector(</span><br><span class="line">          child: <span class="keyword">new</span> Text(<span class="string">"sure"</span>),</span><br><span class="line">          onTap: () &#123; Navigator.of(context).pop(<span class="keyword">true</span>); &#125;,</span><br><span class="line">        ),</span><br><span class="line">      )</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="路由（Route）"><a href="#路由（Route）" class="headerlink" title="路由（Route）"></a>路由（<code>Route</code>）</h2><p>路由（<code>Route</code>）分为两种，一种是静态路由，另一种是动态路由。</p>
 <h3 id="静态路由"><a href="#静态路由" class="headerlink" title="静态路由"></a>静态路由</h3><p>所谓静态路由就是在 <code>flutter</code> 初始化时， <code>flutter</code> 就知道该应用存在那些路由。这些路由定义在 <code>MaterialApp</code> 控件的 <code>routers</code> 属性中。</p>
 <p><code>routers</code> 需要 Map 类型，第一个参数是路由名称，第二个参数是对应的页面。</p>
@@ -610,7 +610,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <!-- 
     <i class="fa fa-user"></i>
