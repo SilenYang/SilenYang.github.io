@@ -86,16 +86,17 @@
 
 
 
-<meta name="description" content="记录一些平时学习到的东西">
-<meta property="og:type" content="website">
-<meta property="og:title" content="SilenYang@前端笔记">
-<meta property="og:url" content="http://yoursite.com/tags/CentOS/index.html">
+<meta name="description" content="在前端会有通过 canvas 合成图片，再保存到本地的情况，在保存的时候会有可能出现一些问题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="a标签保存 canvas 图片出现网络错误">
+<meta property="og:url" content="http://yoursite.com/2019/03/06/a标签保存 canvas 图片出现网络错误/index.html">
 <meta property="og:site_name" content="SilenYang@前端笔记">
-<meta property="og:description" content="记录一些平时学习到的东西">
+<meta property="og:description" content="在前端会有通过 canvas 合成图片，再保存到本地的情况，在保存的时候会有可能出现一些问题。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-03-06T06:56:34.589Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SilenYang@前端笔记">
-<meta name="twitter:description" content="记录一些平时学习到的东西">
+<meta name="twitter:title" content="a标签保存 canvas 图片出现网络错误">
+<meta name="twitter:description" content="在前端会有通过 canvas 合成图片，再保存到本地的情况，在保存的时候会有可能出现一些问题。">
 
 
 
@@ -125,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/CentOS/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/03/06/a标签保存 canvas 图片出现网络错误/"/>
 
 
 
 
 
-  <title>标签: CentOS | SilenYang@前端笔记</title>
+  <title>a标签保存 canvas 图片出现网络错误 | SilenYang@前端笔记</title>
   
 
 
@@ -160,7 +161,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -264,54 +265,152 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>CentOS<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/06/a标签保存 canvas 图片出现网络错误/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SilenYang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SilenYang@前端笔记">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/04/13/在 VirtualBox 中使用 CentOS 遇到的问题/" itemprop="url">
-              
-                <span itemprop="name">在 VirtualBox 中使用 CentOS 遇到的问题</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">a标签保存 canvas 图片出现网络错误</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-13T10:25:38+08:00"
-              content="2018-04-13" >
-          04-13
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-06T11:31:29+08:00">
+                2019-03-06
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在前端会有通过 <code>canvas</code> 合成图片，再保存到本地的情况，在保存的时候会有可能出现一些问题。</p>
+<a id="more"></a>
+<p>在我们接到和图片相关的需求时，如图片合成、压缩上传等都是通过 <code>canvas</code> 去实现。但把 <code>canvas</code> 处理后的图片下载到本地保存一般都是通过 <code>a</code> 标签来实现的：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> link_A = <span class="built_in">document</span>.createElement(<span class="string">"a"</span>);</span><br><span class="line">link_A.download = <span class="string">"somename"</span>;</span><br><span class="line">link_A.href = canvas.toDataURL(<span class="string">"image/png"</span>);</span><br><span class="line"><span class="built_in">document</span>.body.appendChild(link_A);</span><br><span class="line">link_A.click();</span><br><span class="line">link_A.remove();</span><br></pre></td></tr></table></figure>
+<p>这也是一般性的做法，但是这样做会有一个问题就是 <code>canvas</code> 图片如果太大，会造成无法下载。在 <code>Chrome</code> 浏览器就会出现 <code>网络错误</code> 的问题。</p>
+<p>这是因为在使用 <code>锚元素（an Anchor Element）</code> 标签时，例如：<code>&lt;a&gt;</code> ，他们的 <code>src</code> 或 <code>href</code> 属性会有长度的限制。若图片太大转化为 <code>base64</code> 会超出长度限制出现网络错误的问题。</p>
+<p>解决办法为将 <code>canvas</code> 转化为 <code>blob</code> 实现下载：</p>
+<p>将 <code>base64</code> 转化为 <code>blob</code> ：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> binStr = atob(base64.split(<span class="string">","</span>)[<span class="number">1</span>]);</span><br><span class="line"><span class="keyword">const</span> len = binStr.length;</span><br><span class="line"><span class="keyword">const</span> blobArr = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(len);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">  blobArr[i] = binStr.charCodeAt(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> imgBlob = <span class="keyword">new</span> Blob([blobArr]);</span><br><span class="line">link_A.href = URL.createObjectURL(imgBlob);</span><br></pre></td></tr></table></figure>
+<p>将 <code>canvas</code> 转化为 <code>blob</code> ：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">canvas.toBlob(<span class="function"><span class="params">blob</span> =&gt;</span> &#123;</span><br><span class="line">  link_A.href = URL.createObjectURL(blob);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><a href="https://stackoverflow.com/questions/37135417/download-canvas-as-png-in-fabric-js-giving-network-error" target="_blank" rel="noopener">参考</a></p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/29/flutter启动页、导航页、广告页/" rel="next" title="flutter启动页、导航页、广告页">
+                <i class="fa fa-chevron-left"></i> flutter启动页、导航页、广告页
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -319,6 +418,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -370,7 +473,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -381,7 +484,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -566,6 +669,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
