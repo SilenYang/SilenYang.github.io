@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="SilenYang@前端笔记">
 <meta property="og:description" content="记录一些很实用的小方法，方便在以后的工作中查询。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-01T03:47:48.424Z">
+<meta property="og:updated_time" content="2019-08-01T03:50:03.321Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="实用小技巧">
 <meta name="twitter:description" content="记录一些很实用的小方法，方便在以后的工作中查询。">
@@ -405,7 +405,24 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.js</span></span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> handler = fs</span><br><span class="line">  .readdirSync(__dirname)</span><br><span class="line">  .filter(<span class="function"><span class="params">value</span> =&gt;</span> value !== <span class="string">"index.js"</span>)</span><br><span class="line">  .map(<span class="function"><span class="params">value</span> =&gt;</span> <span class="built_in">require</span>(<span class="string">"./"</span> + value));</span><br><span class="line"><span class="comment">// [&#123;...&#125;,&#123;...&#125;]</span></span><br></pre></td></tr></table></figure>
 <p>会生成一个数组，每一项是一个文件是导出的内容，如果我们想合并为一个对象：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = pageHandles.reduce(<span class="function">(<span class="params">a, b</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123; ...a, ...b &#125;;</span><br><span class="line">&#125;, &#123;&#125;);</span><br></pre></td></tr></table></figure>
-<h4 id="设置-iOS-中-H5-字体跟随系统改变"><a href="#设置-iOS-中-H5-字体跟随系统改变" class="headerlink" title="设置 iOS 中 H5 字体跟随系统改变"></a>设置 iOS 中 H5 字体跟随系统改变</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">font-family</span>: <span class="selector-tag">-apple-system</span>, <span class="selector-tag">Helvetica</span>, "<span class="selector-tag">Heiti</span> <span class="selector-tag">SC</span>";</span><br></pre></td></tr></table></figure>
+<h4 id="设置-iOS-中-H5-字体跟随系统改变"><a href="#设置-iOS-中-H5-字体跟随系统改变" class="headerlink" title="设置 iOS 中 H5 字体跟随系统改变"></a>设置 iOS 中 H5 字体跟随系统改变</h4><blockquote>
+<p>ios 系统</p>
+<ul>
+<li>默认中文字体是 Heiti SC</li>
+<li>默认英文字体是 Helvetica</li>
+<li>默认数字字体是 HelveticaNeue</li>
+<li>无微软雅黑字体</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>android 系统</p>
+<ul>
+<li>默认中文字体是 Droidsansfallback</li>
+<li>默认英文和数字字体是 Droid Sans</li>
+<li>无微软雅黑字体</li>
+</ul>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">font-family</span>: <span class="selector-tag">-apple-system</span>, <span class="selector-tag">Helvetica</span>, "<span class="selector-tag">Heiti</span> <span class="selector-tag">SC</span>";</span><br></pre></td></tr></table></figure>
 
       
     </div>
