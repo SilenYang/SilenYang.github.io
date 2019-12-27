@@ -95,7 +95,7 @@
 <meta property="og:description" content="收录一些平时开发过程中遇到的 BUG ，方便以后查阅。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/04/08/常见错误集合（持续更新...）/avatar.png">
-<meta property="og:updated_time" content="2019-08-01T09:17:36.816Z">
+<meta property="og:updated_time" content="2019-12-27T09:59:11.596Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常见错误集合(持续更新...)">
 <meta name="twitter:description" content="收录一些平时开发过程中遇到的 BUG ，方便以后查阅。">
@@ -399,6 +399,7 @@
 <p>这是 <code>sass</code> 的问题，是安装 <code>node-sass</code> 出错引起的报错，一般来说删除了重装就好了，如果不行的话可以使用以下方法来解决（我使用这种方法解决）：</p>
 <p>修改 <code>package.json</code> 中 <code>node-sass</code> 的版本然后重新安装依赖：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"dependencies"</span>: &#123;</span><br><span class="line">    <span class="attr">"node-sass"</span>: <span class="string">"npm:sass"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"resolution"</span>: &#123;</span><br><span class="line">    <span class="attr">"node-sass"</span>: <span class="string">"npm:sass"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="解决-ios-部分手机键盘弹起导致-input-无法聚焦的-bug"><a href="#解决-ios-部分手机键盘弹起导致-input-无法聚焦的-bug" class="headerlink" title="解决 ios 部分手机键盘弹起导致 input 无法聚焦的 bug"></a>解决 ios 部分手机键盘弹起导致 input 无法聚焦的 bug</h3><p>监听 input 的 <code>blur</code> 事件，执行 <code>window.scroll(0,0)</code> 让页面还原到初始位置</p>
 
       
     </div>
@@ -589,7 +590,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-pull"><span class="nav-number">1.</span> <span class="nav-text">git pull</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-fetch-时，不能缓存-cookie"><span class="nav-number">2.</span> <span class="nav-text">使用 fetch 时，不能缓存 cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-fetch-上传文件时，node-后台接收不到"><span class="nav-number">3.</span> <span class="nav-text">使用 fetch 上传文件时，node 后台接收不到</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#微信小程序中-border-radius-圆角边框剪裁问题"><span class="nav-number">4.</span> <span class="nav-text">微信小程序中 border-radius 圆角边框剪裁问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理-vscode-中-nvm-错误提示的问题"><span class="nav-number">5.</span> <span class="nav-text">处理 vscode 中 nvm 错误提示的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FSEventStreamStart"><span class="nav-number">6.</span> <span class="nav-text">FSEventStreamStart</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lodash-clonedeep"><span class="nav-number">7.</span> <span class="nav-text">lodash.clonedeep</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-pull"><span class="nav-number">1.</span> <span class="nav-text">git pull</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-fetch-时，不能缓存-cookie"><span class="nav-number">2.</span> <span class="nav-text">使用 fetch 时，不能缓存 cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-fetch-上传文件时，node-后台接收不到"><span class="nav-number">3.</span> <span class="nav-text">使用 fetch 上传文件时，node 后台接收不到</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#微信小程序中-border-radius-圆角边框剪裁问题"><span class="nav-number">4.</span> <span class="nav-text">微信小程序中 border-radius 圆角边框剪裁问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理-vscode-中-nvm-错误提示的问题"><span class="nav-number">5.</span> <span class="nav-text">处理 vscode 中 nvm 错误提示的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FSEventStreamStart"><span class="nav-number">6.</span> <span class="nav-text">FSEventStreamStart</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lodash-clonedeep"><span class="nav-number">7.</span> <span class="nav-text">lodash.clonedeep</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决-ios-部分手机键盘弹起导致-input-无法聚焦的-bug"><span class="nav-number">8.</span> <span class="nav-text">解决 ios 部分手机键盘弹起导致 input 无法聚焦的 bug</span></a></li></ol></div>
             
 
           </div>
