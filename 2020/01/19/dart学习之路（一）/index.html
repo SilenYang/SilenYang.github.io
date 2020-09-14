@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="dart 语言学习之路：数据类型和函数">
@@ -118,11 +118,6 @@
         <li class="menu-item menu-item-home">
 
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
         <li class="menu-item menu-item-tags">
@@ -307,7 +302,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/dart/" rel="tag"># dart</a>
+              <a href="/tags/dart/" rel="tag"><i class="fa fa-tag"></i> dart</a>
           </div>
 
         
@@ -378,7 +373,7 @@
           站点概览
         </li>
       </ul>
-
+      
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#注释"><span class="nav-number">1.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型"><span class="nav-number">2.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Number-类型"><span class="nav-number">2.1.</span> <span class="nav-text">Number 类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#String-类型"><span class="nav-number">2.2.</span> <span class="nav-text">String 类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Boolean-类型"><span class="nav-number">2.3.</span> <span class="nav-text">Boolean 类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#List-类型（数组）"><span class="nav-number">2.4.</span> <span class="nav-text">List 类型（数组）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Map-类型"><span class="nav-number">2.5.</span> <span class="nav-text">Map 类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Set-类型"><span class="nav-number">2.6.</span> <span class="nav-text">Set 类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Runes-类型"><span class="nav-number">2.7.</span> <span class="nav-text">Runes 类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Symbol-类型"><span class="nav-number">2.8.</span> <span class="nav-text">Symbol 类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类型转换"><span class="nav-number">2.9.</span> <span class="nav-text">类型转换</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类型判断"><span class="nav-number">3.</span> <span class="nav-text">类型判断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量"><span class="nav-number">4.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常量"><span class="nav-number">5.</span> <span class="nav-text">常量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数"><span class="nav-number">6.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#assert-断言函数"><span class="nav-number">6.1.</span> <span class="nav-text">assert() 断言函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#箭头函数"><span class="nav-number">6.2.</span> <span class="nav-text">箭头函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#匿名函数"><span class="nav-number">6.3.</span> <span class="nav-text">匿名函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可选参数与默认值"><span class="nav-number">6.4.</span> <span class="nav-text">可选参数与默认值</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#命名参数"><span class="nav-number">6.4.1.</span> <span class="nav-text">命名参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#位置参数"><span class="nav-number">6.4.2.</span> <span class="nav-text">位置参数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#主函数"><span class="nav-number">6.5.</span> <span class="nav-text">主函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#作用域"><span class="nav-number">6.6.</span> <span class="nav-text">作用域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#闭包"><span class="nav-number">6.7.</span> <span class="nav-text">闭包</span></a></li></ol></li></ol></div>
@@ -392,6 +387,8 @@
   <p class="site-author-name" itemprop="name">SilenYang</p>
   <div class="site-description" itemprop="description">记录一些平时学习到的东西</div>
 </div>
+
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="//music.163.com/outchain/player?type=2&id=31081311&auto=1&height=66"></iframe>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
@@ -448,7 +445,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">SilenYang</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
         
@@ -472,6 +469,8 @@
 <script src="/js/schemes/pisces.js"></script>
 <script src="/js/next-boot.js"></script>
 
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
 
 
   

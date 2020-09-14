@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="收录一些平时开发过程中遇到的 BUG ，方便以后查阅。">
@@ -118,11 +118,6 @@
         <li class="menu-item menu-item-home">
 
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
         <li class="menu-item menu-item-tags">
@@ -259,8 +254,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/错误/" rel="tag"># 错误</a>
-              <a href="/tags/bug/" rel="tag"># bug</a>
+              <a href="/tags/错误/" rel="tag"><i class="fa fa-tag"></i> 错误</a>
+              <a href="/tags/bug/" rel="tag"><i class="fa fa-tag"></i> bug</a>
           </div>
 
         
@@ -331,7 +326,7 @@
           站点概览
         </li>
       </ul>
-
+      
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-pull"><span class="nav-number">1.</span> <span class="nav-text">git pull</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-fetch-时，不能缓存-cookie"><span class="nav-number">2.</span> <span class="nav-text">使用 fetch 时，不能缓存 cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-fetch-上传文件时，node-后台接收不到"><span class="nav-number">3.</span> <span class="nav-text">使用 fetch 上传文件时，node 后台接收不到</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#微信小程序中-border-radius-圆角边框剪裁问题"><span class="nav-number">4.</span> <span class="nav-text">微信小程序中 border-radius 圆角边框剪裁问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理-vscode-中-nvm-错误提示的问题"><span class="nav-number">5.</span> <span class="nav-text">处理 vscode 中 nvm 错误提示的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FSEventStreamStart"><span class="nav-number">6.</span> <span class="nav-text">FSEventStreamStart</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lodash-clonedeep"><span class="nav-number">7.</span> <span class="nav-text">lodash.clonedeep</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决-ios-部分手机键盘弹起导致-input-无法聚焦的-bug"><span class="nav-number">8.</span> <span class="nav-text">解决 ios 部分手机键盘弹起导致 input 无法聚焦的 bug</span></a></li></ol></div>
@@ -345,6 +340,8 @@
   <p class="site-author-name" itemprop="name">SilenYang</p>
   <div class="site-description" itemprop="description">记录一些平时学习到的东西</div>
 </div>
+
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="//music.163.com/outchain/player?type=2&id=31081311&auto=1&height=66"></iframe>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
@@ -401,7 +398,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">SilenYang</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
         
@@ -425,6 +422,8 @@
 <script src="/js/schemes/pisces.js"></script>
 <script src="/js/next-boot.js"></script>
 
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
 
 
   
